@@ -1,0 +1,1067 @@
+<!-- Pretendard 웹폰트 (가변: 100~900 전 두께 지원) -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+
+<script>
+  (function(){
+    try{
+      if(!document.querySelector('meta[name="viewport"]')){
+        var m=document.createElement('meta');
+        m.setAttribute('name','viewport');
+        m.setAttribute('content','width=device-width, initial-scale=1');
+        (document.head||document.getElementsByTagName('head')[0]||document.documentElement).appendChild(m);
+      }
+    }catch(e){}
+  })();
+  </script>
+
+<div class="contents_div chmo-wrap">
+<style>
+.contents_div.chmo-wrap{
+  font-family:'Pretendard Variable','Pretendard','GmarketSans','Apple SD Gothic Neo','Noto Sans KR',sans-serif;
+  color:#333333; line-height:1.65; max-width:800px; margin:0 auto;
+  word-break:keep-all; font-size:17px; }
+.contents_div.chmo-wrap h1,
+.contents_div.chmo-wrap h2,
+.contents_div.chmo-wrap h3{word-break:keep-all;}
+.contents_div.chmo-wrap h1,
+.contents_div.chmo-wrap h2{font-weight:900;}
+.contents_div.chmo-wrap *{box-sizing:border-box; box-shadow:none !important;}
+.contents_div.chmo-wrap a{text-decoration:none; color:inherit;}
+.contents_div.chmo-wrap img,.contents_div.chmo-wrap svg{max-width:100%; vertical-align:middle;}
+
+/* ---------- 공통 섹션 ---------- */
+/* 상하 마진 70px 통일 · 좌우 여백 50px(배경 밴드 섹션은 내부 패딩으로 50px 확보) */
+.contents_div .chmo-sec{margin:0; padding:70px 50px; scroll-margin-top:80px;}
+.contents_div #chmo-sec-change,
+.contents_div #chmo-sec-channels{background:#f8f8f8;}
+.contents_div #chmo-sec-table{background:#DFEDA7;}
+/* 섹션2: 그레이 바탕 위에 둥근 초록 배경 레이어 (모서리 뒤 = #f8f8f8) + 배경별 3개 */
+.contents_div #chmo-sec-intro{background:#f8f8f8; position:relative;}
+.contents_div #chmo-sec-intro::before{
+  content:''; position:absolute; top:0; left:0; right:0; bottom:0;
+  background-color:#DFEDA7;
+
+  background-image:
+    /* 배경별 우상단*/url("img/star.svg"),/* 배경별 좌중앙 */url("img/star.svg"),/* 배경별  우하단*/url("img/star.svg");
+  background-repeat:no-repeat;
+  /* 배경별: 순서 = ①우상단 ②좌중앙 ③우하단 (position/size 값도 같은 순서) */
+  background-position:right -90px top -90px, left -51px center, right -6px bottom -55px;
+  background-size:230px 230px, 90px 90px, 106px 106px;
+  border-radius:20px;
+}
+.contents_div #chmo-sec-intro > *{position:relative; z-index:1;}
+.contents_div .chmo-intro-deco{
+  position:absolute; top:0; left:0; right:0; bottom:0;
+  z-index:0; pointer-events:none; overflow:hidden;
+}
+.contents_div .chmo-intro-deco img{
+  position:absolute; width:150px; height:auto; opacity:.9;
+  /* 둥둥 플로팅: 기존 transform(rotate 등)과 충돌 없는 translate 속성으로 애니메이션 */
+  animation:chmo-float 4s ease-in-out infinite;
+  will-change:translate;
+}
+/* 로고별 주기·시작 시점을 다르게 → 제각각 자연스럽게 둥둥 */
+.contents_div .chmo-intro-deco img.chmo-deco-story{animation-duration:4.4s;}
+.contents_div .chmo-intro-deco img.chmo-deco-insta{animation-duration:3.6s; animation-delay:-1.2s;}
+.contents_div .chmo-intro-deco img.chmo-deco-blog{animation-duration:5s; animation-delay:-2.4s;}
+@keyframes chmo-float{
+  0%,100%{translate:0 0;}
+  50%{translate:0 -12px;}
+}
+/* 모션 최소화 설정 사용자는 애니메이션 정지 */
+@media (prefers-reduced-motion:reduce){
+  .contents_div .chmo-intro-deco img{animation:none;}
+}
+/* [카톡스토리 로고 - 노란색] 상단 중앙 */
+.contents_div .chmo-deco-story{top:-8px; right:calc(-3% - 25px); transform:translateX(-1%) rotate(-10deg);}
+/* [인스타그램 로고]  */
+.contents_div .chmo-deco-insta{bottom:-58px; right:-22px; transform:rotate(12deg);}
+/* [블로그 로고 - 초록색]  */
+.contents_div .chmo-deco-blog{top:calc(50% + 10px); left:calc(-6% + 20px); transform:translateY(-50%) rotate(10deg);}
+/* ---------- 로고 개별 너비 ----------
+.contents_div .chmo-intro-deco img.chmo-deco-story{width:155px;}  /* 카톡스토리 로고 너비 */
+.contents_div .chmo-intro-deco img.chmo-deco-insta{width:170px;}  /* 인스타그램 로고 너비 */
+.contents_div .chmo-intro-deco img.chmo-deco-blog{width:138px;}   /* 블로그 로고 너비 */
+
+
+
+@media (max-width:640px){
+  .contents_div .chmo-intro-deco img{width:84px;}   /* 모바일 공통 크기(예비값) */
+  .contents_div .chmo-intro-deco img.chmo-deco-story{width:80px;}  /* 카톡스토리 모바일 너비 (웹 155px의 약 56%) */
+  .contents_div .chmo-intro-deco img.chmo-deco-insta{width:95px;}  /* 인스타그램 모바일 너비 */
+  .contents_div .chmo-intro-deco img.chmo-deco-blog{width:59px;}   /* 블로그 모바일 너비 */
+  /* 데스크톱 배치를 모바일 크기에 맞게 비율 축소(px 오프셋 약 55~60%) */
+  .contents_div .chmo-deco-story{top:6px; right:calc(-3% - 14px);}                 /* 카톡스토리: 상단 우측 */
+  .contents_div .chmo-deco-insta{bottom:-27px; right:-28px;}                        /* 인스타그램: 하단 우측(티커 뒤) */
+  .contents_div .chmo-deco-blog{top:calc(50% - 37px); left:calc(-6% + 6px);}        /* 블로그: 중앙 왼쪽 */
+}
+.contents_div .chmo-sec--band{padding:0;}
+/* 콘텐츠 너비 통일: 섹션 내 주요 블록은 모두 동일 폭(섹션 내부 100%) */
+.contents_div .chmo-steps,
+.contents_div .chmo-menu,
+.contents_div .chmo-cards,
+.contents_div .chmo-legend,
+.contents_div .chmo-tablewrap{width:100%; max-width:100%; margin-left:0; margin-right:0;}
+.contents_div .chmo-eyebrow{
+  display:inline-block; font-size:13px; font-weight:700; letter-spacing:.12em;
+  color:#333333; border:1px solid #c9e175; border-radius:999px;
+  padding:5px 14px; margin-bottom:14px; background:#fff;
+}
+.contents_div .chmo-h2{
+  font-size:27px; font-weight:900; line-height:1.35; margin:0 0 10px; color:#333333;
+}
+.contents_div .chmo-h2 em{font-style:normal; color:#333333; background:#fff; padding:0 6px; border-radius:6px;}
+/* 그레이 배경(#f8f8f8) 섹션: 흰색 하이라이트가 배경과 비슷해 안 보이므로 메인컬러로 */
+.contents_div #chmo-sec-change .chmo-h2 em,
+.contents_div #chmo-sec-channels .chmo-h2 em{background:#d2e682;}
+.contents_div #chmo-sec-change,
+.contents_div #chmo-sec-channels,
+.contents_div #chmo-sec-table{position:relative;}
+.contents_div .chmo-sec-deco{
+  position:absolute;  height:auto;
+  pointer-events:none; z-index:0; /* 글자 뒤 레이어 (섹션 배경보다는 앞) */
+}
+.contents_div #chmo-sec-change > *:not(.chmo-sec-deco),
+.contents_div #chmo-sec-channels > *:not(.chmo-sec-deco),
+.contents_div #chmo-sec-table > *:not(.chmo-sec-deco){position:relative; z-index:1;}
+/* 섹션2(초록 배경)는 기존 `> *` 규칙(ID 선택자)이 우선이라 데코만 절대배치로 재보정 */
+.contents_div #chmo-sec-intro > .chmo-sec-deco{position:absolute; z-index:0;}
+/* ---------- [아이콘 개별 조절] PC 크기·위치 ----------
+   아이콘마다 width / top / right 값을 다르게 주려면 여기서 수정 */
+.contents_div .chmo-deco-home{width:145px; top:119px; right:30px;}    /* 공홈 */
+.contents_div .chmo-deco-check{width:146px; top:132px; right:50px;}   /* 체크 */
+.contents_div .chmo-deco-search{width:165px; top:95px; right:56px;}  /* 돋보기 */
+.contents_div .chmo-deco-touch{width:190px; top:94px; right:43px; transform: rotate(8deg);}   /* 터치 */
+/* ---------- 데코 아이콘 그림자 ---------- */
+.contents_div .chmo-deco-home,
+.contents_div .chmo-deco-search,
+.contents_div .chmo-deco-touch{
+  filter:drop-shadow(7px 7px 9px rgba(89, 89, 89, 0.179));}
+.contents_div .chmo-desc{margin:0 0 24px; color:#4a4a4a; font-size:16.5px;}
+
+/* ---------- 히어로 ---------- */
+/* 상단 티커 → 배지 → 타이틀 → 하단 블랙&화이트 앵커바 */
+.contents_div .chmo-hero{
+  background:linear-gradient(180deg,#DFEDA7 0%,#DFEDA7 40%,#d2e287 62%,#d2e287 100%);
+  padding:82px 0 0; position:relative; overflow:hidden; color:#333333; text-align:center; /* 하단 패딩 0 = 티커가 히어로 바닥에 밀착 */
+}
+
+/* 지역명 티커 */
+/* 티커 영역 높이: 상하 padding 값으로 조절 (48px → 64px, 블로그 로고가 티커 안에 완전히 들어가 페이드 경계가 안 보이도록) */
+.contents_div .chmo-ticker{overflow:hidden; padding:64px 0; user-select:none; position:relative; z-index:1;}
+.contents_div .chmo-ticker::before,
+.contents_div .chmo-ticker::after{
+  content:''; position:absolute; top:0; bottom:0; width:110px; z-index:2; pointer-events:none;
+}
+.contents_div .chmo-ticker::before{left:0; background:linear-gradient(90deg, rgba(210,226,135,1) 0%, rgba(210,226,135,0) 100%);}
+.contents_div .chmo-ticker::after{right:0; background:linear-gradient(270deg, rgba(210,226,135,1) 0%, rgba(210,226,135,0) 100%);}
+/* 중괄호 { } : scaleX 값으로 너비 조절 (1 = 원본, 작을수록 좁아짐.) */
+.contents_div .chmo-ticker-brace{
+  position:absolute; top:50%; transform:translateY(-54%) scaleX(.8); z-index:1;
+  font-size:82px; font-weight:600; color:#fff; line-height:1; pointer-events:none;
+}
+.contents_div .chmo-ticker-brace--l{left:50%; margin-left:-145px;}
+.contents_div .chmo-ticker-brace--r{left:50%; margin-left:110px;}
+.contents_div .chmo-ticker-track{
+  display:inline-flex; align-items:center; gap:80px; white-space:nowrap;
+  padding-left:52px; will-change:transform;
+  animation:chmoTicker 90s linear infinite; /* 웹: 더 천천히 (60s→90s) */
+}
+.contents_div .chmo-ticker-track span{
+  font-size:52px; font-weight:900; color:#fff; letter-spacing:-.02em; line-height:1.1;
+}
+@keyframes chmoTicker{
+  from{transform:translateX(0);}
+  to{transform:translateX(-50%);}
+}
+@media (prefers-reduced-motion: reduce){
+  .contents_div .chmo-ticker-track{animation:none;}
+  .contents_div .chmo-links a:hover{transform:none;}
+  .contents_div .chmo-links a:hover .chmo-arrow{animation:none; transform:translateX(4px);}
+}
+
+/* 히어로 본문 */
+.contents_div .chmo-hero-inner{padding:0; margin:0 0 15px; position:relative; z-index:1;} /* 하단 마진 = 본문(p)과 티커 사이 간격 */
+.contents_div .chmo-hero-badge{
+  display:inline-block; margin:0 0 35px 34px; position:relative;
+}
+.contents_div .chmo-badge-star{
+  /* 별-배지 갭: left 값으로 조절 (음수가 클수록 별이 배지에서 왼쪽으로 멀어짐. 현재 -45px) */
+  position:absolute; left:-55px; top:-22px; z-index:0;
+  width:88px; height:88px; display:inline-flex; align-items:center; justify-content:center;
+  background:#ff5fa2; color:#fff; font-size:15px; font-weight:900;
+  clip-path:polygon(50.0% 0.0%, 58.9% 25.6%, 82.1% 11.7%, 72.5% 37.0%, 99.2% 41.3%, 75.6% 54.5%, 93.3% 75.0%, 66.7% 69.9%, 67.1% 97.0%, 50.0% 76.0%, 32.9% 97.0%, 33.3% 69.9%, 6.7% 75.0%, 24.4% 54.5%, 0.8% 41.3%, 27.5% 37.0%, 17.9% 11.7%, 41.1% 25.6%);
+}
+.contents_div .chmo-badge-pill{
+  position:relative; z-index:2; display:inline-block; transform:rotate(-8deg);
+  background:#fff; border:1.5px solid #333333; color:#333333;
+  font-size:14px; font-weight:800; letter-spacing:.02em;
+  border-radius:10px; padding:10px 24px;
+}
+.contents_div .chmo-hero-h1{
+  position:relative; font-size:40px; font-weight:900; line-height:1.3; margin:0 0 20px;
+}
+.contents_div .chmo-hero-h1 strong{color:#6f9100;}
+.contents_div .chmo-hero-sub{position:relative; font-size:16.5px; color:#6b6b6b; margin:0;}
+.contents_div .chmo-hero-sub b{color:#333333;}
+
+/* 앵커바: 블랙&화이트 */
+.contents_div .chmo-toc{
+  display:grid; grid-template-columns:repeat(4, minmax(0,1fr)); gap:1px;
+  margin:0; position:relative; background:transparent;
+}
+.contents_div .chmo-toc a{
+  display:flex; align-items:center; justify-content:center;
+  background:#333333; color:#fff; border:0; border-radius:0;
+  font-size:15px; font-weight:700; padding:14px 8px;
+  transition:background .15s; cursor:pointer; white-space:nowrap;
+}
+.contents_div .chmo-toc a:hover{background:#8eb500;}
+
+/* ---------- 달라진 점 3가지 ---------- */
+.contents_div .chmo-steps{display:flex; flex-direction:column; gap:14px; margin:0;}
+.contents_div .chmo-step{
+  border:1.5px solid #e0e0e0; border-radius:18px; padding:24px 40px 24px 26px; background:#fff;
+  display:flex; gap:20px; align-items:flex-start;
+}
+.contents_div .chmo-step-num{
+  flex:0 0 auto; width:32px; height:32px; border-radius:10px; background:#DFEDA7;
+  color:#333333; font-weight:900; font-size:14px; display:flex; align-items:center; justify-content:center;
+}
+.contents_div .chmo-step h3{margin:2px 0 6px; font-size:18.5px; font-weight:700; color:#333333;}
+.contents_div .chmo-step p{margin:0; font-size:15.5px; color:#4a4a4a;}
+.contents_div .chmo-step p.chmo-break-all{word-break:break-all;} /* 주소 포함 문단만 글자 단위 줄바꿈 */
+.contents_div .chmo-step p code{
+  font-family:inherit; background:#f3f8dd; border-radius:6px;
+  padding:1px 5px; font-size:14.5px; color:#333333; font-weight:700;
+}
+.contents_div .chmo-step--point{background:#f3f8dd; border-color:#cfe08f;}
+
+/* ---------- 모두의 전남광주 메뉴 ---------- */
+.contents_div .chmo-menu{
+  border:1.5px solid #e0e0e0; border-radius:20px; overflow:hidden; background:#fff;
+}
+.contents_div .chmo-menu-head{
+  background:#fff; color:#333333; padding:22px 26px; border-bottom:1.5px solid #cfe08f;
+}
+.contents_div .chmo-menu-head h3{margin:0 0 4px; font-size:20px; font-weight:700;}
+.contents_div .chmo-menu-head p{margin:0; font-size:14.5px; color:#3f4530;}
+.contents_div .chmo-menu ul{list-style:none; margin:0; padding:8px 0;}
+.contents_div .chmo-menu li{
+  display:flex; gap:14px; align-items:flex-start; padding:15px 26px;
+}
+.contents_div .chmo-menu li + li{border-top:1px solid #efefef;}
+.contents_div .chmo-menu-badge{
+  flex:0 0 auto; min-width:86px; text-align:center; background:#DFEDA7; border:1.5px solid #cfe08f;
+  color:#333333; font-size:13.5px; font-weight:800; border-radius:999px; padding:5px 12px; margin-top:1px;
+}
+.contents_div .chmo-menu li p{margin:2px 0 0; font-size:15.5px; color:#4a4a4a;}
+
+/* ---------- 채널 디렉토리 카드 ---------- */
+/* minmax(0,1fr): 긴 URL 텍스트가 있어도 카드가 섹션 너비(700px)를 넘지 않음 */
+.contents_div .chmo-cards{display:grid; grid-template-columns:repeat(2, minmax(0,1fr)); gap:14px;}
+.contents_div .chmo-card{
+  border:1.5px solid #e0e0e0; border-radius:18px; background:#fff; padding:22px 22px 20px;
+  min-width:0;
+}
+.contents_div .chmo-card--wide{grid-column:1 / -1;}
+.contents_div .chmo-card-head{display:flex; align-items:center; gap:10px; margin-bottom:6px;}
+.contents_div .chmo-card-ic{
+  width:34px; height:34px; border-radius:11px; display:flex; align-items:center; justify-content:center;
+  flex:0 0 auto;
+}
+/* 카드 아이콘 내부 도형 크기: 칩(34px) 대비 약 56% = 표 SNS 칩과 동일 비율
+   · 도형을 더 작게/크게 하려면 아래 width·height 값 조절 */
+.contents_div .chmo-card-ic svg{width:19px; height:19px; display:block;}
+.contents_div .chmo-card-head h3{margin:0; font-size:17.5px; font-weight:700; color:#333333;}
+.contents_div .chmo-card-head h3 small{font-size:13px; font-weight:600; color:#8a8a8a;}
+.contents_div .chmo-card-copy{margin:0 0 12px; font-size:14px; color:#4a4a4a;}
+.contents_div .chmo-links{list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:8px;}
+.contents_div .chmo-links a{
+  display:flex; align-items:center; gap:8px; border:1px solid #b9cf6e; border-radius:12px;
+  padding:10px 14px; font-size:14.5px; font-weight:600; color:#333333; background:#f3f8dd;
+  transition:border-color .15s, background .15s, transform .2s ease; min-width:0;
+}
+.contents_div .chmo-links a:hover{border-color:#9cba33; background:#e7f2b4; transform:translateY(-2px);}
+.contents_div .chmo-links a .chmo-arrow{margin-left:auto; color:#333333; font-weight:800; flex:0 0 auto; transition:transform .2s ease;}
+/* 호버 시 화살표가 오른쪽으로 살짝 왕복(nudge) — 이동 거리는 keyframes의 4px, 속도는 .7s 조절 */
+.contents_div .chmo-links a:hover .chmo-arrow{animation:chmoArrowNudge .7s ease-in-out infinite;}
+@keyframes chmoArrowNudge{
+  0%,100%{transform:translateX(0);}
+  50%{transform:translateX(4px);}
+}
+/* 호버 시 라벨 배지 색 반전(흰 배경 → 초록 배경) */
+.contents_div .chmo-links a:hover .chmo-lk-label{background:#9cba33; border-color:#9cba33; color:#fff;}
+.contents_div .chmo-links .chmo-lk-label{
+  flex:0 0 auto; font-size:12.5px; font-weight:800; color:#333333;
+  border:1px solid #a3b95c; background:#fff; border-radius:6px; padding:1px 7px;
+  transition:background .2s, border-color .2s, color .2s;
+}
+/* 모바일 전용 채널명 표기: PC에서는 숨김 */
+.contents_div .chmo-m-suffix{display:none;}
+/* 링크 텍스트 컬러 수정 */
+.contents_div .chmo-links .chmo-lk-url{flex:1 1 auto; min-width:0; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; color:#6a6a6a; font-weight:500; font-size:14px;}
+.contents_div .chmo-tip{
+  margin:12px 0 0; font-size:13.5px; color:#6b6b6b; background:#f3f8dd;
+  border:1px dashed #c9dd85; border-radius:12px; padding:10px 14px;
+}
+.contents_div .chmo-tip b{color:#333333;}
+
+/* ---------- 27개 시군 SNS 표 ---------- */
+.contents_div .chmo-table-sec .chmo-h2{margin-bottom:6px;}
+.contents_div .chmo-legend{
+  display:flex; flex-wrap:nowrap; justify-content:space-between; gap:4px; margin:0 0 16px;
+  padding:12px 10px; border:1.5px solid #e0e0e0; border-radius:14px; background:#fff;
+}
+.contents_div .chmo-legend span{
+  display:inline-flex; align-items:center; gap:4px; font-size:12px; font-weight:600;
+  color:#4a4a4a; letter-spacing:-.03em; white-space:nowrap; flex:0 0 auto;
+}
+.contents_div .chmo-legend .chmo-sns--sm{width:22px; height:22px; border-radius:7px;}
+.contents_div .chmo-legend .chmo-sns--sm svg{width:13px; height:13px;}
+.contents_div .chmo-tablewrap{
+  border:1.5px solid #cfe08f; border-radius:18px; overflow:hidden; background:#fff;
+}
+.contents_div .chmo-table{
+  width:100%; border-collapse:collapse; font-size:14px;
+  table-layout:fixed; /* 모든 열 가로 너비 균일 · 스크롤 없이 100% 맞춤 */
+}
+.contents_div .chmo-table col.chmo-col-region{width:76px;}
+.contents_div .chmo-table thead th{
+  background:#f8f8f8; color:#333333; font-weight:500; font-size:12.5px; letter-spacing:-.02em;
+  padding:12px 2px; text-align:center; white-space:nowrap;
+}
+.contents_div .chmo-table thead th:first-child{
+  text-align:center; font-weight:600;
+}
+.contents_div .chmo-table tbody th{
+  background:#f3f8dd; color:#333333;
+  font-weight:700; font-size:13.5px; letter-spacing:-.02em; text-align:center; padding:11.5px 2px;
+  border-top:1px solid #ececec; white-space:nowrap;
+}
+.contents_div .chmo-table tbody td{
+  border-top:1px solid #ececec; text-align:center; vertical-align:middle; padding:8.5px 2px; background:#fff;
+}
+.contents_div .chmo-table tbody tr:nth-child(even) td{background:#fafbf3;}
+.contents_div .chmo-table tbody tr:nth-child(even) th{background:#eef4d3;}
+.contents_div .chmo-table td .chmo-none{color:#cfcfcf; font-weight:700;}
+
+/* SNS 아이콘 칩 */
+.contents_div .chmo-sns{
+  display:inline-flex; width:34px; height:34px; border-radius:10px;
+  align-items:center; justify-content:center; border:1px solid transparent;
+  transition:transform .12s;
+}
+.contents_div .chmo-sns:hover{transform:scale(1.12);}
+.contents_div .chmo-sns svg{width:19px; height:19px; display:block;}
+.contents_div .chmo-sns--blog{background:#03c75a;}
+.contents_div .chmo-sns--yt{background:#ff0000;}
+/* 인스타그램: 노랑→핑크→보라 그라데이션 (색·방향은 아래 값으로 조절)
+   · border:none = 공통 투명 테두리(1px) 제거. 그라데이션+둥근 모서리에서
+     테두리 띠가 이중 합성되며 생기는 진한 헤어라인 방지 */
+.contents_div .chmo-sns--insta{background:linear-gradient(45deg, #feda75 0%, #fa7e1e 30%, #d62976 60%, #962fbf 100%); border:none;}
+.contents_div .chmo-sns--fb{background:#1877f2;}
+.contents_div .chmo-sns--story{background:#ffcd00;}
+.contents_div .chmo-sns--talk{background:#ffcd00;}
+.contents_div .chmo-sns--home{background:#003896;}
+.contents_div .chmo-sns--news{background:#08518D;}
+.contents_div .chmo-sns--x{background:#000;}
+.contents_div .chmo-sns--tour{background:#0e7a6c;}
+.contents_div .chmo-sns--etc{background:#5b6b72;}
+.contents_div .chmo-sns--letter{background:#40A1FF;}
+.contents_div .chmo-sns--sm{width:26px; height:26px; border-radius:8px;}
+.contents_div .chmo-sns--sm svg{width:15px; height:15px;}
+.contents_div .chmo-table-note{margin:8px 2px 0; font-size:13.5px; color:#6b6b6b; text-align:right;}
+
+/* 전체보기 버튼 */
+
+/* 아웃트로: 배경 밴드도 800px 이내 · 내부 좌우 여백 50px */
+.contents_div .chmo-outro{
+  margin:28px 0 0; background:#fff; border:1.5px solid #b9cf6e; border-radius:20px;
+  padding:30px 40px; text-align:center;
+}
+.contents_div .chmo-outro p{margin:0; font-size:17px; color:#333333; line-height: 1.6;}
+.contents_div .chmo-outro strong{color:#333333;}
+
+/* 푸터 밴드 : 마무리 멘트 + 관련태그를 하나의 그라데이션 배경으로 */
+.contents_div .chmo-footband{
+  margin:0; padding:55px 0 59px;
+  background:linear-gradient(180deg,#DFEDA7 0%,#d2e287 100%); position:relative;
+}
+/* 상단 점선 구분선: 대시 10px / 간격 6px */
+.contents_div .chmo-footband::before{
+  content:''; position:absolute; top:0; left:0; right:0; height:1px;
+  background:repeating-linear-gradient(90deg,#fff 0 10px,transparent 10px 16px);
+}
+.contents_div .chmo-finale{
+  margin:0; padding:0 50px; text-align:center; word-break:keep-all;
+}
+.contents_div .chmo-finale-big{
+  margin:0 0 12px; font-size:35px; font-weight:900; color:#333333; line-height:1.3;
+}
+/* 푸터 '구독' 컬러 강조 : 히어로 강조와 동일 톤 */
+.contents_div .chmo-finale-em{
+  font-style:normal; color:#80ac10;
+}
+.contents_div .chmo-finale-bigwrap{
+  position:relative; display:inline-block; margin:0 0 17px;
+}
+.contents_div .chmo-finale-bigwrap .chmo-finale-big{margin:0;}
+/* 푸터 이미지 벨 */
+.contents_div .chmo-finale-bell{
+  position:absolute; top:-52px; left:60px; width:90px; height:auto;
+  pointer-events:none; z-index:1;
+  transform: rotate(-12deg);
+}
+.contents_div .chmo-finale-small{
+  margin:0; font-size:18px; font-weight:400; color:#4a4a4a; line-height:1.5;
+}
+/* 흰색 형광펜 강조 (PC/모바일 공통) */
+.contents_div .chmo-hl-white{font-style:normal; background:#fff; padding:0 5px; border-radius:5px; box-decoration-break:clone; -webkit-box-decoration-break:clone;}
+
+/* 푸터 관련태그 */
+.contents_div .chmo-tags{
+  margin:30px 0 0; padding:16px 50px 0;
+  display:flex; flex-wrap:wrap; gap:7px 7px; justify-content:center;
+}
+.contents_div .chmo-tags span{
+  display:inline-block; font-size:13.5px; font-weight:400; color:#333333;
+  background:#f3f8dd; border:1px solid #b6d747; border-radius:999px; padding:6px 14px;
+}
+
+/* 모바일 전용 줄바꿈 */
+.contents_div .chmo-br-m{display:none;}
+/* PC/모바일 텍스트 분기 */
+.contents_div .chmo-txt-m{display:none;}
+
+/* ---------- 모바일 (600px) ---------- */
+/* 글자 크기를 clamp()로 지정해 화면 폭(600px→320px)에 따라 자동으로 줄어들도록 처리 */
+@media (max-width:600px){
+  .contents_div.chmo-wrap{font-size:clamp(14px, 4.2vw, 16px); padding:0 0 60px;}
+  .contents_div.chmo-wrap h1,
+  .contents_div.chmo-wrap h2,
+  .contents_div.chmo-wrap h3{word-break:keep-all;}
+  .contents_div .chmo-br-m{display:inline;}
+  .contents_div .chmo-br-pc{display:none;} /* PC 전용 줄바꿈: 모바일에서 제거 */
+  /* PC/모바일 텍스트 분기 전환 */
+  .contents_div .chmo-txt-pc{display:none;}
+  .contents_div .chmo-txt-m{display:inline;}
+  .contents_div .chmo-sec{margin:0; padding:48px clamp(14px, 4.5vw, 20px);}
+
+  /* 히어로 */
+  .contents_div .chmo-hero{padding:48px 0 3px;} /* 모바일도 하단 패딩 0 = 티커 바닥 밀착 */
+  .contents_div .chmo-ticker{padding:clamp(36px, calc(10vw + 2px), 48px) 0;} /* 티커 영역 높이(모바일): 위아래 여백 +5px */
+  .contents_div .chmo-ticker::before,
+  .contents_div .chmo-ticker::after{width:clamp(36px, 10vw, 56px);}
+  .contents_div .chmo-ticker-track{gap:clamp(34px, calc(5vw + 16px), 46px); padding-left:clamp(34px, calc(5vw + 16px), 46px); animation-duration:60s;} /* 텍스트 간 갭 +16px, 모바일 속도는 기존 유지 */
+  .contents_div .chmo-ticker-track span{font-size:clamp(19px, calc(8.5vw - 5px), 27px); transform:translateY(4px);} /* 텍스트 4px 아래로, 크기 5px 축소 */
+  .contents_div .chmo-ticker-brace{font-size:clamp(40px, calc(16vw - 4px), 54px);} /* 모바일 중괄호 크기 4px 축소 */
+  .contents_div .chmo-ticker-brace--l{margin-left:clamp(-82px, calc(-18vw - 10px), -66px);} /* 중앙 기준 좌우 대칭, 간격 +20px */
+  .contents_div .chmo-ticker-brace--r{margin-left:clamp(46px, calc(12vw + 10px), 58px);} /* 중앙 기준 좌우 대칭, 간격 +20px */
+  .contents_div .chmo-hero-inner{padding:0 clamp(14px, 4.5vw, 20px); margin:0 0 -4px;}
+  .contents_div .chmo-hero-badge{margin:0 0 32px 26px;} /* 키커-타이틀 간격(웹 35px → 모바일 32px) */
+  .contents_div .chmo-badge-star{
+    width:clamp(48px, 16vw, 61px); height:clamp(48px, 16vw, 61px);
+    font-size:clamp(11px, 3.4vw, 13px); left:clamp(-36px, -9.5vw, -28px); top:-18px;
+  } /* 모바일 별-배지 갭: left 값 */
+  .contents_div .chmo-badge-pill{font-size:clamp(12px, 3.6vw, 14px); padding:9px clamp(14px, 5vw, 24px);}
+  .contents_div .chmo-hero-h1{font-size:clamp(23px, calc(6.4vw + 4px), 29px);} /* 모바일 타이틀 +4px */
+  .contents_div .chmo-hero-sub{font-size:13.5px; line-height:1.5;} /* 모바일 서브 문구 고정 크기 */
+
+  /* 앵커바 */
+  .contents_div .chmo-toc{grid-template-columns:repeat(2, minmax(0,1fr));}
+  .contents_div .chmo-toc a{font-size:clamp(12px, 3.7vw, 13.5px); padding:12.5px 6px; font-weight: 400;}
+
+  /* 공통 타이포 */
+  .contents_div .chmo-eyebrow{font-size:11px; padding:3px 10px; margin-bottom:10px;}
+  .contents_div .chmo-h2{font-size:clamp(18px, 5.9vw, 22px);}
+  /* ---------- [아이콘 개별 조절] 모바일 크기·위치 ----------
+     아이콘마다 모바일에서 다르게 주려면 여기서 수정 */
+  .contents_div .chmo-deco-home{width:50px; top:89px; left:79%; transform: rotate(-5deg);}    /* 공홈 */
+  .contents_div .chmo-deco-check{width:45px; top:72px; right:28px;}   /* 체크 */
+  .contents_div .chmo-deco-search{width:50px; top:80px; left:77%;}  /* 돋보기 */
+  .contents_div #chmo-sec-intro::before{background-size:220px 220px, 90px 90px, 106px 106px;} /* 배경별(모바일): 우상단 별 축소 */
+  .contents_div .chmo-deco-touch{width:80px; top:71px; right:24px;}   /* 터치 */
+  .contents_div .chmo-desc{font-size:14.5px;}
+
+  /* 달라진 점 3가지 */
+  /* 번호+제목은 한 줄, 본문 p는 카드 전체 폭 사용(들여쓰기 없음) */
+  .contents_div .chmo-step{
+    padding:18px 18px; display:grid;
+    grid-template-columns:auto minmax(0,1fr); gap:8px 10px; align-items:start;
+  }
+  .contents_div .chmo-step > div{display:contents;}
+  .contents_div .chmo-step-num{margin-top:1px; width:clamp(24px, 7.5vw, 28px); height:clamp(24px, 7.5vw, 28px); font-size:clamp(12px, 3.7vw, 13.5px); border-radius:9px;}
+  .contents_div .chmo-step h3{margin:0; font-size:16.5px;}
+  .contents_div .chmo-step p{grid-column:1 / -1; margin:0; font-size:14.5px;}
+  .contents_div .chmo-step p code{font-size:13.5px;}
+
+  /* 모두의 전남광주 메뉴 */
+  .contents_div .chmo-menu-head{padding:18px 20px;}
+  .contents_div .chmo-menu-head h3{font-size:16.5px;}
+  .contents_div .chmo-menu-head p{font-size:13.5px;}
+  .contents_div .chmo-menu li{padding:10px 18px; min-height:64px; flex-direction:row; align-items:center; gap:10px;}
+  .contents_div .chmo-menu li p{margin:0; font-size:14.5px; line-height:1.5;}
+  .contents_div .chmo-menu-badge{font-size:12px; min-width:58px; padding:3px 8px; margin-top:0; align-self:center;}
+
+  /* 채널 카드 */
+  .contents_div .chmo-cards{grid-template-columns:minmax(0,1fr);}
+  .contents_div .chmo-card{padding:20px 18px 18px;}
+  /* 모바일 카드 아이콘: 칩 30px · 도형 17px (약 56% 비율 유지) */
+  .contents_div .chmo-card-ic{width:30px; height:30px; border-radius:10px;}
+  .contents_div .chmo-card-ic svg{width:17px; height:17px;}
+  .contents_div .chmo-card-head h3{font-size:16.5px;}
+  .contents_div .chmo-card-copy{font-size:13.5px;}
+  .contents_div .chmo-links{flex-direction:row; flex-wrap:wrap; gap:8px;}
+  .contents_div .chmo-links li{flex:1 1 calc(50% - 4px); min-width:0;}
+  .contents_div .chmo-links a{width:100%; font-size:14px; padding:9px 12px;}
+  /* 반폭 버튼(한 줄 2개)에서는 잘려 보이는 도메인 주소 숨김 → 라벨+화살표만 표시 */
+  .contents_div .chmo-links li:not(:only-child) .chmo-lk-url{display:none;}
+  /* 라벨이 긴 카드(카카오톡 채널 등)는 세로 정렬 유지 */
+  .contents_div .chmo-links--col{flex-direction:column;}
+  .contents_div .chmo-links--col li{flex:1 1 100%;}
+  /* 세로 리스트: 라벨 폭을 통일해 뒤 텍스트 시작 위치 정렬 */
+  /* 세로 리스트: 흰 배지가 글자 폭에 딱 맞게 (고정 최소폭 제거) */
+  .contents_div .chmo-links--col .chmo-lk-label{min-width:0; text-align:left;}
+  .contents_div .chmo-links--col li .chmo-lk-url,
+  .contents_div .chmo-links--col li:not(:only-child) .chmo-lk-url{display:block;} /* 전폭이므로 텍스트 유지 */
+  /* 지정한 도메인 주소는 모바일에서 숨김 (누리집 · 카카오톡 채널) */
+  .contents_div .chmo-links li .chmo-lk-url--m-hide,
+  .contents_div .chmo-links--col li:not(:only-child) .chmo-lk-url--m-hide{display:none;}
+  .contents_div .chmo-links .chmo-lk-label{font-size:12px; font-weight:700; border:none; background:#fff; padding:1px 5px; border-radius:6px;}
+  /* 모바일: 호버 시에도 색 변화 없이 그대로 유지 */
+  .contents_div .chmo-links a:hover .chmo-lk-label{background:#fff; border-color:transparent; color:#333333;}
+  /* 모바일: 라벨 뒤 채널명 표기 — 흰 배지 밖 일반 텍스트 (예: [구.광주] 블로그) */
+  .contents_div .chmo-m-suffix{display:inline; flex:0 0 auto; font-size:12px; font-weight:600; color:#4d4d4d; margin-left:-3px;}
+  /* 카카오스토리: 자간 축소로 한 줄 유지 */
+  .contents_div .chmo-m-suffix--tight{letter-spacing:-.06em; white-space:nowrap;}
+  .contents_div .chmo-links .chmo-lk-url{font-size:12.5px;} /* '소식지 보러 가기' 등 링크 설명 텍스트 */
+  .contents_div .chmo-tip{font-size:13px;}
+
+  /* 27개 시군 표 : 열 균일 정렬 + 글자 자동 축소 */
+  .contents_div .chmo-table{font-size:clamp(10px, 3.1vw, 12px);}
+  .contents_div .chmo-legend{
+    display:grid; grid-template-columns:repeat(3, minmax(0,1fr));
+    gap:8px 6px; justify-items:start; padding:12px 12px;
+  }
+  .contents_div .chmo-legend span{font-size:clamp(10px, 3.1vw, 12px); gap:4px;}
+  .contents_div .chmo-legend .chmo-sns--sm{width:clamp(18px, 5.6vw, 22px); height:clamp(18px, 5.6vw, 22px); border-radius:6px;}
+  .contents_div .chmo-legend .chmo-sns--sm svg{width:clamp(10px, 3.3vw, 13px); height:clamp(10px, 3.3vw, 13px);}
+  .contents_div .chmo-table col.chmo-col-region{width:clamp(40px, 13vw, 48px);}
+  .contents_div .chmo-table thead th{
+    /* 긴 채널명(카카오스토리 등)은 칸 폭에 맞춰 자동 줄바꿈 → 정렬 유지 */
+    font-size:clamp(8.5px, 2.5vw, 10px); letter-spacing:-.05em; padding:12px 1px;
+    white-space:normal; word-break:break-all; line-height:1.25; vertical-align:middle;
+  }
+  .contents_div .chmo-table tbody th{font-size:clamp(10px, 3vw, 11px); letter-spacing:-.03em; padding:10.5px 1px;}
+  .contents_div .chmo-table tbody td{padding:9px 1px;} /* 행 높이 추가 확대 (터치 편의) */
+  .contents_div .chmo-sns{width:clamp(19px, 6vw, 22px); height:clamp(19px, 6vw, 22px); border-radius:7px;}
+  .contents_div .chmo-sns svg{width:clamp(11px, 3.6vw, 13px); height:clamp(11px, 3.6vw, 13px);}
+  .contents_div .chmo-table-note{font-size:13px; margin-top:7px;}
+
+  /* 아웃트로 · 푸터 */
+  .contents_div .chmo-outro{margin:35px 0 0; padding:24px 18px;} /* 상하 여백 축소 */
+  .contents_div .chmo-outro .chmo-br-pc{display:none;} /* 모바일: 강제 줄바꿈 제거 */
+  .contents_div .chmo-outro p{font-size:14.5px;}
+  .contents_div .chmo-tags{margin-top:6px; padding:22px 20px 0;} /* 태그 상단 여백 축소(30→10) */
+  .contents_div .chmo-tags span{font-size:10px; padding:5px 12px;}
+  .contents_div .chmo-footband{margin-top:0; padding:45px 0 37px;} /* 태그 하단 여백 축소(55→45) */
+  .contents_div .chmo-finale{padding:0 20px;}
+  .contents_div .chmo-finale-big{font-size:clamp(21px, 6.6vw, 25px);}
+  .contents_div .chmo-finale-bigwrap{ margin-bottom:10px;} /* 두꺼운 글씨를 벨 아래로 내림 · 아래 텍스트와 간격 축소 */
+  .contents_div .chmo-finale-bell{width:68px; top:calc(clamp(-30px, -8vw, -24px) + 8px); left:calc(50% - clamp(88px, 25vw, 97px));} /* 아이콘 8px 아래로 */
+  .contents_div .chmo-finale-small{font-size:14.5px;}
+}
+</style>
+
+<!-- ===== SNS 아이콘 스프라이트 ===== -->
+<svg width="0" height="0" style="position:absolute;overflow:hidden" aria-hidden="true">
+  <symbol id="chmo-ic-blog" viewBox="0 0 24 24">
+    <path fill="#fff" d="M4 3.5h16A2.5 2.5 0 0 1 22.5 6v9a2.5 2.5 0 0 1-2.5 2.5h-6.2L9.4 21c-.6.5-1.4 0-1.4-.7v-2.8H4A2.5 2.5 0 0 1 1.5 15V6A2.5 2.5 0 0 1 4 3.5Z"/>
+    <text x="12" y="14.6" text-anchor="middle" font-size="10.5" font-weight="900" font-family="Arial, sans-serif" fill="#03c75a">b</text>
+  </symbol>
+  <symbol id="chmo-ic-yt" viewBox="0 0 24 24">
+    <rect x="1.5" y="4.5" width="21" height="15" rx="4.5" fill="#fff"/>
+    <path fill="#ff0000" d="M10 8.6v6.8l6-3.4-6-3.4Z"/>
+  </symbol>
+  <symbol id="chmo-ic-insta" viewBox="0 0 24 24">
+    <rect x="2.5" y="2.5" width="19" height="19" rx="5.5" fill="none" stroke="#fff" stroke-width="2"/>
+    <circle cx="12" cy="12" r="4.4" fill="none" stroke="#fff" stroke-width="2"/>
+    <circle cx="17.4" cy="6.6" r="1.5" fill="#fff"/>
+  </symbol>
+  <symbol id="chmo-ic-fb" viewBox="0 0 24 24">
+    <path fill="#fff" d="M13.6 21v-7.2h2.5l.4-2.9h-2.9V9c0-.85.25-1.45 1.5-1.45h1.5V4.95c-.3-.04-1.2-.12-2.3-.12-2.3 0-3.9 1.4-3.9 4v2.1H7.9v2.9h2.5V21h3.2Z"/>
+  </symbol>
+  <symbol id="chmo-ic-story" viewBox="0 0 24 24">
+    <path fill="#3c1e1e" d="M12 3.2c-5 0-9 3.2-9 7.2 0 2.6 1.7 4.9 4.3 6.2l-1 3.6c-.1.4.3.7.6.5l4.3-2.9c.3 0 .5.1.8.1 5 0 9-3.2 9-7.2s-4-7.5-9-7.5Z"/>
+  </symbol>
+  <symbol id="chmo-ic-storyw" viewBox="0 0 24 24">
+    <path fill="#fff" d="M9.6 4.6h6.6c.6 0 1 .4 1 1v7.6c0 3.9-1.9 6.2-4.9 8.5-.4.3-.9.2-1.2-.2l-2.3-3c-.3-.4-.2-.9.2-1.2 1.7-1.3 2.8-2.6 3.2-4.1H9.6c-.6 0-1-.4-1-1V5.6c0-.6.4-1 1-1Z"/>
+  </symbol>
+  <symbol id="chmo-ic-home" viewBox="0 0 24 24">
+    <path fill="#fff" d="M11.3 3.3c.4-.38 1-.38 1.4 0l8.9 8.3c.7.66.24 1.9-.73 1.9H19v6c0 1-.8 1.8-1.8 1.8h-2.6c-.5 0-.9-.4-.9-.9v-4.3c0-.4-.3-.7-.7-.7h-2c-.4 0-.7.3-.7.7v4.3c0 .5-.4.9-.9.9H6.8c-1 0-1.8-.8-1.8-1.8v-6H3.13c-.97 0-1.43-1.24-.73-1.9l8.9-8.3Z"/>
+  </symbol>
+  <symbol id="chmo-ic-tour" viewBox="0 0 24 24">
+    <path fill="#fff" d="M12 2.5a7 7 0 0 0-7 7c0 5 7 12 7 12s7-7 7-12a7 7 0 0 0-7-7Zm0 9.5a2.6 2.6 0 1 1 0-5.2 2.6 2.6 0 0 1 0 5.2Z"/>
+  </symbol>
+  <symbol id="chmo-ic-news" viewBox="0 0 24 24">
+    <path fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"
+      d="M7 6.3V4.8c0-.6.45-1 1-1h11.5c.55 0 1 .4 1 1V17a2.6 2.6 0 0 1-2.6 2.6M3.5 7.3c0-.55.45-1 1-1H16c.55 0 1 .45 1 1V17a2.6 2.6 0 0 0 2.6 2.6H6.1A2.6 2.6 0 0 1 3.5 17V7.3Z"/>
+    <path fill="none" stroke="#fff" stroke-width="1.7" stroke-linecap="round"
+      d="M6.7 10h7.1M6.7 13.2h7.1M6.7 16.4h7.1"/>
+  </symbol>
+  <symbol id="chmo-ic-x" viewBox="0 0 24 24">
+    <path fill="#fff" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231 5.451-6.231Zm-1.161 17.52h1.833L7.084 4.126H5.117l11.966 15.644Z"/>
+  </symbol>
+  <symbol id="chmo-ic-etc" viewBox="0 0 24 24">
+    <path fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" d="M9.5 14.5 14.5 9.5M8 12l-2.4 2.4a3.6 3.6 0 0 0 5 5L13 17M16 12l2.4-2.4a3.6 3.6 0 0 0-5-5L11 7"/>
+  </symbol>
+</svg>
+
+<!-- ===== 히어로 ===== -->
+<header class="chmo-hero">
+  <div class="chmo-intro-deco" aria-hidden="true">
+    <!-- 카톡스토리 로고(노랑): 크기·위치는 CSS의 .chmo-deco-story 에서 수정 -->
+
+    <img class="chmo-deco-story" src="img/카톡스토리로고.webp">
+    <!-- 인스타그램 로고: 크기·위치는 CSS의 .chmo-deco-insta 에서 수정 -->
+    <img class="chmo-deco-insta" src="img/인스타로고.webp">
+    <!-- 블로그 로고(초록): 크기·위치는 CSS의 .chmo-deco-blog 에서 수정 -->
+    <img class="chmo-deco-blog" src="img/블로그로고.webp">
+
+  </div>
+  <div class="chmo-hero-inner">
+    <div class="chmo-hero-badge">
+      <span class="chmo-badge-star">27</span>
+      <span class="chmo-badge-pill">공식 SNS 모음집</span>
+    </div>
+    <h1 class="chmo-hero-h1">
+      전남광주통합특별시<br class="chmo-br-m"> 27개 시·군,<br>
+      홍보에 이렇게 <strong>진심</strong>입니다
+    </h1>
+    <p class="chmo-hero-sub">
+      이제 하나니까요. 서로 좀 더 알아가 봅시다!<br>
+      빠르고 정확한 통합특별시 소식이 궁금한 여러분을 위해<br>
+      <b>27개 시·군 공식 SNS 모음집</b>을 준비했어요.
+    </p>
+  </div>
+  <div class="chmo-ticker" aria-hidden="true">
+    <span class="chmo-ticker-brace chmo-ticker-brace--l">{</span>
+    <span class="chmo-ticker-brace chmo-ticker-brace--r">}</span>
+    <div class="chmo-ticker-track">
+      <span>강진군</span><span>고흥군</span><span>곡성군</span><span>광산구</span><span>광양시</span><span>광주특별시</span><span>구례군</span><span>나주시</span><span>남구</span><span>담양군</span><span>동구</span><span>목포시</span><span>무안군</span><span>보성군</span><span>북구</span><span>서구</span><span>순천시</span><span>신안군</span><span>여수시</span><span>영광군</span><span>영암군</span><span>완도군</span><span>장성군</span><span>장흥군</span><span>진도군</span><span>함평군</span><span>해남군</span><span>화순군</span>
+      <span>강진군</span><span>고흥군</span><span>곡성군</span><span>광산구</span><span>광양시</span><span>광주특별시</span><span>구례군</span><span>나주시</span><span>남구</span><span>담양군</span><span>동구</span><span>목포시</span><span>무안군</span><span>보성군</span><span>북구</span><span>서구</span><span>순천시</span><span>신안군</span><span>여수시</span><span>영광군</span><span>영암군</span><span>완도군</span><span>장성군</span><span>장흥군</span><span>진도군</span><span>함평군</span><span>해남군</span><span>화순군</span>
+    </div>
+  </div>
+</header>
+
+<!-- ===== 앵커링크 ===== -->
+<nav class="chmo-toc" aria-label="본문 바로가기">
+  <a href="#chmo-sec-change">이렇게 달라졌어요</a>
+  <a href="#chmo-sec-intro">모두의 전남광주</a>
+  <a href="#chmo-sec-channels">공식 채널 모두 보기</a>
+  <a href="#chmo-sec-table">27개 시군 SNS 모음</a>
+</nav>
+
+<!-- ===== 섹션 1. 이렇게 달라졌어요 ===== -->
+<section class="chmo-sec" id="chmo-sec-change">
+
+  <img class="chmo-sec-deco chmo-deco-home" 
+src="img/공홈.webp">
+  <span class="chmo-eyebrow">CHECK POINT</span>
+  <h2 class="chmo-h2">전남광주통합특별시<br class="chmo-br-m"><br class="chmo-br-pc">공식 채널 이렇게 <em>달라졌어요</em></h2>
+  <p class="chmo-desc">즐겨찾기를 눌러두셨다면 꼭 확인하세요. 통합에 맞춰 채널 이름과 주소가 바뀌었어요.</p>
+
+  <div class="chmo-steps">
+    <div class="chmo-step">
+      <span class="chmo-step-num">1</span>
+      <div>
+        <h3>채널 이름이 바뀌었습니다</h3>
+        <p>‘모두의 광주’가 통합 후 <code>모두의 전남광주</code>로 바뀐 것처럼, 전남광주 통합에 맞춰 이름이 변경된 채널이 많아요.</p>
+      </div>
+    </div>
+    <div class="chmo-step">
+      <span class="chmo-step-num">2</span>
+      <div>
+        <h3>바뀐 이름에 따라 접속 주소도 대부분 달라졌어요</h3>
+        <p class="chmo-break-all">모두의 전남광주도 <code>news.jeonnam-gwangju.go.kr</code>로 홈페이지 주소가 변경되었어요. 대부분의 채널이 이름과 함께 주소가 바뀌어, 즐겨찾기 링크를 해두었다면 수정이 필요해요.</p>
+      </div>
+    </div>
+    <div class="chmo-step chmo-step--point">
+      <span class="chmo-step-num">3</span>
+      <div>
+        <h3>통합 첫해 개편으로 추후 달라질 수 있습니다</h3>
+        <p>현재의 변화는 전남광주통합특별시 첫해 개편으로 추후 달라질 수 있어요. 달라질 경우 그때도 모두의 전남광주가 신속하게 알려드릴게요!</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 섹션 2. 모두의 전남광주 소개 ===== -->
+<section class="chmo-sec" id="chmo-sec-intro">
+<span class="chmo-eyebrow">FIRST STOP</span>
+  <h2 class="chmo-h2">‘모두의 전남광주’부터 <em>알고 가세요</em></h2>
+  <p class="chmo-desc">
+    &lt;모두의 전남광주&gt;는 전남광주의 모든 소식을 만나는 콘텐츠 집합소예요.<br class="chmo-br-pc">
+    전남광주의 소식을 한곳에서 만나는 아카이브 공간이자, 이슈·정책·관광·문화 등<br class="chmo-br-pc">
+    전남광주의 새로운 매력을 모두에게 알리는 채널이에요.
+  </p>
+
+  <div class="chmo-menu">
+    <div class="chmo-menu-head">
+      <h3>모두의 전남광주, 이 메뉴로 즐기세요</h3>
+      <p>news.jeonnam-gwangju.go.kr</p>
+    </div>
+    <ul>
+      <li>
+        <span class="chmo-menu-badge">뉴스</span>
+        <p>취향, 세대, 분야를 아우르는 취향저격 콘텐츠 모음</p>
+      </li>
+      <li>
+        <span class="chmo-menu-badge">미디어</span>
+        <p>전남광주 인터넷방송, 유튜브, SNS 콘텐츠를 한눈에</p>
+      </li>
+      <li>
+        <span class="chmo-menu-badge">소식지</span>
+        <p>매거진G, 전남광주새뜸 등 전남광주 소식지 모음</p>
+      </li>
+      <li>
+        <span class="chmo-menu-badge">시민광장</span>
+        <p>시민참여, 이벤트, 모두크루를 위한 메뉴</p>
+      </li>
+      <li>
+        <span class="chmo-menu-badge">모음.zip</span>
+        <p>전남광주 대표 채널 소개</p>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<!-- ===== 섹션 3. 공식 누리집 & 채널 모두 보기 ===== -->
+<section class="chmo-sec" id="chmo-sec-channels">
+
+  <img class="chmo-sec-deco chmo-deco-search" 
+src="img/돋보기.webp">
+  <span class="chmo-eyebrow">OFFICIAL CHANNELS</span>
+  <h2 class="chmo-h2">전남광주통합특별시<br class="chmo-br-m"><br class="chmo-br-pc"> 공식 누리집&amp;채널 <em>모두 보기</em></h2>
+  <p class="chmo-desc">취향대로 골라 구독하세요. 하나만 구독해도 전남광주가 가까워져요.</p>
+
+  <div class="chmo-cards">
+
+    <div class="chmo-card chmo-card--wide">
+      <div class="chmo-card-head">
+        <span class="chmo-card-ic chmo-sns--home"><svg><use href="#chmo-ic-home"></use></svg></span>
+        <h3>공식 누리집</h3>
+      </div>
+      <p class="chmo-card-copy">전남광주통합특별시의 모든 것</p>
+      <ul class="chmo-links">
+        <li><a href="https://www.jeonnam-gwangju.go.kr" target="_blank" rel="noopener"><span class="chmo-lk-label">공식 누리집 (임시)</span><span class="chmo-lk-url chmo-lk-url--m-hide">www.jeonnam-gwangju.go.kr</span><span class="chmo-arrow">→</span></a></li>
+      </ul>
+    </div>
+
+    <div class="chmo-card">
+      <div class="chmo-card-head">
+        <span class="chmo-card-ic chmo-sns--blog"><svg><use href="#chmo-ic-blog"></use></svg></span>
+        <h3>공식 블로그</h3>
+      </div>
+      <p class="chmo-card-copy">통합특별시 소식을 전문성 있게!</p>
+      <ul class="chmo-links">
+        <li><a href="https://blog.naver.com/jeonnam-gwangju-city" target="_blank" rel="noopener"><span class="chmo-lk-label">구.광주</span><span class="chmo-m-suffix">블로그</span><span class="chmo-lk-url">blog.naver.com/jeonnam-gwangju-city</span><span class="chmo-arrow">→</span></a></li>
+        <li><a href="https://blog.naver.com/jeonnam-gwangju" target="_blank" rel="noopener"><span class="chmo-lk-label">구.전남</span><span class="chmo-m-suffix">블로그</span><span class="chmo-lk-url">blog.naver.com/jeonnam-gwangju</span><span class="chmo-arrow">→</span></a></li>
+      </ul>
+    </div>
+
+    <div class="chmo-card">
+      <div class="chmo-card-head">
+        <span class="chmo-card-ic chmo-sns--tour"><svg><use href="#chmo-ic-tour"></use></svg></span>
+        <h3>문화관광</h3>
+      </div>
+      <p class="chmo-card-copy">즐길거리를 한눈에</p>
+      <ul class="chmo-links">
+        <li><a href="https://blog.naver.com/gwangju_city" target="_blank" rel="noopener"><span class="chmo-lk-label">비짓광주전남</span><span class="chmo-lk-url">blog.naver.com/gwangju_city</span><span class="chmo-arrow">→</span></a></li>
+        <li><a href="https://ijnto.or.kr/" target="_blank" rel="noopener"><span class="chmo-lk-label">전남관광재단</span><span class="chmo-lk-url">ijnto.or.kr</span><span class="chmo-arrow">→</span></a></li>
+      </ul>
+    </div>
+
+    <div class="chmo-card">
+      <div class="chmo-card-head">
+        <span class="chmo-card-ic chmo-sns--insta"><svg><use href="#chmo-ic-insta"></use></svg></span>
+        <h3>공식 인스타그램</h3>
+      </div>
+      <p class="chmo-card-copy">트렌디하게 소통하기!</p>
+      <ul class="chmo-links">
+        <li><a href="https://www.instagram.com/jngj_gwangju/" target="_blank" rel="noopener"><span class="chmo-lk-label">구.광주</span><span class="chmo-m-suffix">인스타그램</span><span class="chmo-lk-url">@jngj_gwangju</span><span class="chmo-arrow">→</span></a></li>
+        <li><a href="https://www.instagram.com/jngj_jeonnam/" target="_blank" rel="noopener"><span class="chmo-lk-label">구.전남</span><span class="chmo-m-suffix">인스타그램</span><span class="chmo-lk-url">@jngj_jeonnam</span><span class="chmo-arrow">→</span></a></li>
+      </ul>
+    </div>
+
+    <div class="chmo-card">
+      <div class="chmo-card-head">
+        <span class="chmo-card-ic chmo-sns--yt"><svg><use href="#chmo-ic-yt"></use></svg></span>
+        <h3>공식 유튜브</h3>
+      </div>
+      <p class="chmo-card-copy">나는 롱폼이 좋아!</p>
+      <ul class="chmo-links">
+        <li><a href="https://www.youtube.com/@jngj_gwangju" target="_blank" rel="noopener"><span class="chmo-lk-label">구.광주</span><span class="chmo-m-suffix">유튜브</span><span class="chmo-lk-url">youtube.com/@jngj_gwangju</span><span class="chmo-arrow">→</span></a></li>
+        <li><a href="https://www.youtube.com/@jngj_jeonnam" target="_blank" rel="noopener"><span class="chmo-lk-label">구.전남</span><span class="chmo-m-suffix">유튜브</span><span class="chmo-lk-url">youtube.com/@jngj_jeonnam</span><span class="chmo-arrow">→</span></a></li>
+      </ul>
+    </div>
+
+    <div class="chmo-card">
+      <div class="chmo-card-head">
+        <span class="chmo-card-ic chmo-sns--fb"><svg><use href="#chmo-ic-fb"></use></svg></span>
+        <h3>페이스북</h3>
+      </div>
+      <p class="chmo-card-copy">좋아요 누르고 소식 받아보세요!</p>
+      <ul class="chmo-links">
+        <li><a href="https://www.facebook.com/jngj.gwangju" target="_blank" rel="noopener"><span class="chmo-lk-label">구.광주</span><span class="chmo-m-suffix">페이스북</span><span class="chmo-lk-url">facebook.com/jngj.gwangju</span><span class="chmo-arrow">→</span></a></li>
+        <li><a href="https://www.facebook.com/jngj.jeonnam" target="_blank" rel="noopener"><span class="chmo-lk-label">구.전남</span><span class="chmo-m-suffix">페이스북</span><span class="chmo-lk-url">facebook.com/jngj.jeonnam</span><span class="chmo-arrow">→</span></a></li>
+      </ul>
+    </div>
+
+    <div class="chmo-card">
+      <div class="chmo-card-head">
+        <span class="chmo-card-ic chmo-sns--story"><svg><use href="#chmo-ic-storyw"></use></svg></span>
+        <h3>카카오 스토리</h3>
+      </div>
+      <p class="chmo-card-copy">스토리로 일상처럼</p>
+      <ul class="chmo-links">
+        <li><a href="https://story.kakao.com/ch/gwangju_city" target="_blank" rel="noopener"><span class="chmo-lk-label">구.광주</span><span class="chmo-m-suffix chmo-m-suffix--tight">카카오스토리</span><span class="chmo-lk-url">story.kakao.com/ch/gwangju_city</span><span class="chmo-arrow">→</span></a></li>
+        <li><a href="https://story.kakao.com/ch/jeollanamdo" target="_blank" rel="noopener"><span class="chmo-lk-label">구.전남</span><span class="chmo-m-suffix chmo-m-suffix--tight">카카오스토리</span><span class="chmo-lk-url">story.kakao.com/ch/jeollanamdo</span><span class="chmo-arrow">→</span></a></li>
+      </ul>
+    </div>
+
+    <div class="chmo-card">
+      <div class="chmo-card-head">
+        <span class="chmo-card-ic chmo-sns--talk"><svg><use href="#chmo-ic-story"></use></svg></span>
+        <h3>카카오톡 채널</h3>
+      </div>
+      <p class="chmo-card-copy">카톡에서 편하게 보세요!</p>
+      <ul class="chmo-links chmo-links--col">
+        <li><a href="https://pf.kakao.com/_UExipj" target="_blank" rel="noopener"><span class="chmo-lk-label" style="letter-spacing:.02em;">전남광주통합특별시 광주청사</span><span class="chmo-m-suffix">카카오톡</span><span class="chmo-lk-url chmo-lk-url--m-hide">pf.kakao.com/_UExipj</span><span class="chmo-arrow">→</span></a></li>
+        <li><a href="https://pf.kakao.com/_NRYKG/posts" target="_blank" rel="noopener"><span class="chmo-lk-label">전라남도</span><span class="chmo-m-suffix">카카오톡</span><span class="chmo-lk-url chmo-lk-url--m-hide">pf.kakao.com/_NRYKG</span><span class="chmo-arrow">→</span></a></li>
+      </ul>
+      <p class="chmo-tip"><b>구독방법</b> 카카오톡에서 ‘전남광주통합특별시 광주청사’ ‘전라남도’ 검색 후 ‘채널 추가’</p>
+    </div>
+
+    <div class="chmo-card">
+      <div class="chmo-card-head">
+        <span class="chmo-card-ic chmo-sns--news"><svg><use href="#chmo-ic-news"></use></svg></span>
+        <h3>뉴스 채널</h3>
+      </div>
+      <p class="chmo-card-copy">전남광주 뉴스는 여기서</p>
+      <ul class="chmo-links">
+        <li><a href="http://tv.jeonnam-gwangju.go.kr/" target="_blank" rel="noopener"><span class="chmo-lk-label">전남광주TV</span><span class="chmo-lk-url">tv.jeonnam-gwangju.go.kr</span><span class="chmo-arrow">→</span></a></li>
+        <li><a href="https://www.youtube.com/@전남광주통합특별시TV" target="_blank" rel="noopener"><span class="chmo-lk-label">유튜브</span><span class="chmo-lk-url">youtube.com/@전남광주통합특별시TV</span><span class="chmo-arrow">→</span></a></li>
+      </ul>
+    </div>
+
+    <div class="chmo-card">
+      <div class="chmo-card-head">
+        <span class="chmo-card-ic chmo-sns--letter"><svg><use href="#chmo-ic-etc"></use></svg></span>
+        <h3>소식지</h3>
+      </div>
+      <p class="chmo-card-copy">집에서 편하게 받아보고 싶다면</p>
+      <ul class="chmo-links chmo-links--col">
+        <li><a href="https://news.jeonnam.go.kr/" target="_blank" rel="noopener"><span class="chmo-lk-label">전남광주새뜸</span><span class="chmo-lk-url">월간 소식지 보러 가기</span><span class="chmo-arrow">→</span></a></li>
+        <li><a href="https://news.jeonnam.go.kr/pay/pay_newsreader.php" target="_blank" rel="noopener"><span class="chmo-lk-label">구독신청</span><span class="chmo-lk-url">새뜸 구독 신청하기</span><span class="chmo-arrow">→</span></a></li>
+        <li><a href="https://news.jeonnam-gwangju.go.kr/gallery.es?mid=a50301010000&amp;bid=0002" target="_blank" rel="noopener"><span class="chmo-lk-label">매거진G</span><span class="chmo-lk-url">분기별 소식지 보러 가기</span><span class="chmo-arrow">→</span></a></li>
+      </ul>
+    </div>
+
+    <div class="chmo-card">
+      <div class="chmo-card-head">
+        <span class="chmo-card-ic chmo-sns--x"><svg><use href="#chmo-ic-x"></use></svg></span>
+        <h3>X <small>(구 트위터)</small></h3>
+      </div>
+      <p class="chmo-card-copy">실시간으로 빠르게 만나는 전남광주</p>
+      <ul class="chmo-links">
+        <li><a href="https://x.com/jngj_jeonnam" target="_blank" rel="noopener"><span class="chmo-lk-label">X</span><span class="chmo-lk-url chmo-lk-url--m-hide">x.com/jngj_jeonnam</span><span class="chmo-arrow">→</span></a></li>
+      </ul>
+    </div>
+
+  </div>
+</section>
+
+<!-- ===== 섹션 4. 27개 시군 SNS 표 ===== -->
+<section class="chmo-sec chmo-table-sec" id="chmo-sec-table">
+
+  <img class="chmo-sec-deco chmo-deco-touch" 
+  src="img/구독.webp"
+>  
+  <span class="chmo-eyebrow">ALL IN ONE</span>
+  <h2 class="chmo-h2">구독으로 함께해요!<br>27개 시군 SNS를 <em>한눈에</em></h2>
+  <p class="chmo-desc">아이콘을 누르면 각 시·군·구의 채널로 바로 이동해요. 우리 동네부터 구독 시작!</p>
+
+  <div class="chmo-legend">
+    <span><i class="chmo-sns chmo-sns--blog chmo-sns--sm"><svg><use href="#chmo-ic-blog"></use></svg></i>블로그</span>
+    <span><i class="chmo-sns chmo-sns--yt chmo-sns--sm"><svg><use href="#chmo-ic-yt"></use></svg></i>유튜브</span>
+    <span><i class="chmo-sns chmo-sns--insta chmo-sns--sm"><svg><use href="#chmo-ic-insta"></use></svg></i>인스타그램</span>
+    <span><i class="chmo-sns chmo-sns--fb chmo-sns--sm"><svg><use href="#chmo-ic-fb"></use></svg></i>페이스북</span>
+    <span><i class="chmo-sns chmo-sns--story chmo-sns--sm"><svg><use href="#chmo-ic-storyw"></use></svg></i>카카오스토리</span>
+    <span><i class="chmo-sns chmo-sns--talk chmo-sns--sm"><svg><use href="#chmo-ic-story"></use></svg></i>카카오톡</span>
+    <span><i class="chmo-sns chmo-sns--tour chmo-sns--sm"><svg><use href="#chmo-ic-tour"></use></svg></i>문화관광</span>
+    <span><i class="chmo-sns chmo-sns--etc chmo-sns--sm"><svg><use href="#chmo-ic-etc"></use></svg></i>기타</span>
+  </div>
+
+  <div class="chmo-tablewrap">
+    <table class="chmo-table">
+      <colgroup>
+        <col class="chmo-col-region">
+        <col><col><col><col><col><col><col><col>
+      </colgroup>
+      <thead>
+        <tr>
+          <th scope="col">지역</th>
+          <th scope="col">블로그</th>
+          <th scope="col">유튜브</th>
+          <th scope="col">인스타</th>
+          <th scope="col">페북</th>
+          <th scope="col">스토리</th>
+          <th scope="col">카톡</th>
+          <th scope="col">관광</th>
+          <th scope="col">기타</th>
+        </tr>
+      </thead>
+      <tbody id="chmoTableBody"></tbody>
+    </table>
+  </div>
+  <p class="chmo-table-note">※ 각 채널 주소는 개편에 따라 변경될 수 있습니다.</p>
+
+  <div class="chmo-outro">
+    <p>
+      현재의 변화는 통합 첫해 개편으로 추후 달라질 수 있어요.<br class="chmo-br-pc">
+      달라질 경우 그때도 <strong>모두의 전남광주</strong>가 가장 신속하게 알려드릴게요!
+    </p>
+  </div>
+</section>
+
+<!-- ===== 푸터 밴드 : 마무리 멘트 + 관련태그 ===== -->
+<div class="chmo-footband">
+  <div class="chmo-finale">
+    <div class="chmo-finale-bigwrap">
+      <p class="chmo-finale-big"><em class="chmo-finale-em">구독</em> 하나로<br>전남광주가 더 가까워집니다.</p>
+    </div>
+    <p class="chmo-finale-small">필요한 소식을 <em class="chmo-hl-white">공식 채널에서 가장 빠르게</em><br class="chmo-br-m"> 만나보세요.</p>
+  </div>
+
+  <footer class="chmo-tags" aria-label="관련 태그">
+  <span>#전남광주통합특별시</span>
+  <span>#모두의전남광주</span>
+  <span>#전남광주공식SNS</span>
+  <span>#광주특별시SNS</span>
+  <span>#전라남도</span>
+  <span>#공식SNS</span>
+  <span>#전남광주시군SNS</span>
+  <span>#전남광주새뜸</span>
+  <span>#전남광주TV</span>
+  <span>#매거진G</span>
+  </footer>
+</div>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "전남광주통합특별시 27개 시군 공식 SNS 채널 모음",
+  "description": "전남광주통합특별시 출범에 맞춰 달라진 공식 채널 이름·주소 안내와 27개 시군 블로그, 유튜브, 인스타그램, 페이스북, 카카오스토리 등 SNS 채널을 한눈에 모았습니다.",
+  "keywords": "전남광주통합특별시, 모두의 전남광주, 전남광주, 광주광역시, 전라남도, 공식 SNS, 시군 SNS 모음, 전남광주새뜸, 전남광주TV, 구독",
+  "inLanguage": "ko",
+  "publisher": {
+    "@type": "GovernmentOrganization",
+    "name": "전남광주통합특별시",
+    "url": "https://www.jeonnam-gwangju.go.kr"
+  },
+  "mainEntityOfPage": "https://news.jeonnam-gwangju.go.kr"
+}
+</script>
+
+<script>
+(function(){
+  /* =========================================================
+     27개 시군 SNS 링크 데이터 (2026.07.09 기준)
+     - 값을 빈 문자열('')로 두면 해당 칸은 '–' 로 표시됩니다.
+     - 순서: [블로그, 유튜브, 인스타그램, 페이스북, 카카오스토리, 카카오톡채널, 관광, 기타]
+     ========================================================= */
+  var CHMO_REGIONS = [
+    {name:'강진군', links:['https://blog.naver.com/gangjingun','https://www.youtube.com/@gangjingun','https://www.instagram.com/gangjingun','https://www.facebook.com/gangjingun.page','https://story.kakao.com/ch/gangjingun','https://pf.kakao.com/_xnufKxb','https://www.gangjin.go.kr/culture','']},
+    {name:'고흥군', links:['https://blog.naver.com/goheung-gun','https://www.youtube.com/@GOHEUNG__TV','https://www.instagram.com/love_goheung/','https://www.facebook.com/goheunggun','https://story.kakao.com/lovegoheung','https://pf.kakao.com/_kxfQxixb','https://tour.goheung.go.kr/','https://x.com/spacegoheung']},
+    {name:'곡성군', links:['https://blog.naver.com/PostList.nhn?blogId=gokseong_love&from=postList&categoryNo=8','https://www.youtube.com/@GOKSEONGGUN','https://www.instagram.com/gokseong_love/','https://www.facebook.com/gokseong.kr','','https://pf.kakao.com/_XFGBd','https://www.gokseong.go.kr/tour/','']},
+    {name:'광산구', links:['https://blog.naver.com/gwangsan242','https://www.youtube.com/@gwangsangu','https://www.instagram.com/gwangsangu/','https://www.facebook.com/gwangsangu/','https://story.kakao.com/ch/gwangsangu','https://pf.kakao.com/_ycvld','','']},
+    {name:'광양시', links:['https://blog.naver.com/gwangyangsi','https://www.youtube.com/@gwangyangsi','https://www.instagram.com/gwangyangsi/','https://www.facebook.com/gwangyang/','https://story.kakao.com/ch/gwangyangsi','https://pf.kakao.com/_NxmjUxl','https://gwangyang.go.kr/tour/','']},
+    {name:'광주',   links:['https://blog.naver.com/jeonnam-gwangju-city','https://www.youtube.com/@jngj_gwangju','https://www.instagram.com/jngj_gwangju/','https://www.facebook.com/jngj.gwangju/','https://story.kakao.com/ch/gwangju_city','https://pf.kakao.com/_UExipj','https://tour.gwangju.go.kr/home/main.cs','']},
+    {name:'구례군', links:['https://blog.naver.com/guryestory','https://www.youtube.com/@gurye_official','https://www.instagram.com/gurye_official/','https://www.facebook.com/Guryecounty','https://story.kakao.com/ch/gurye','https://pf.kakao.com/_XxmEKj','https://www.gurye.go.kr/tour/main.do','']},
+    {name:'나주시', links:['https://blog.naver.com/najusipr','https://www.youtube.com/@najusipr','https://www.instagram.com/najucity/','https://www.facebook.com/najucityhall','','https://pf.kakao.com/_xasxhxiT','https://www.naju.go.kr/tour','']},
+    {name:'남구',   links:['https://blog.naver.com/gwangjunamgu','https://www.youtube.com/@GJnamgu','https://www.instagram.com/gjnamgu','https://www.facebook.com/gwangjunamgu','https://story.kakao.com/ch/gwangjunamgu','https://pf.kakao.com/_EMdrxb','','']},
+    {name:'담양군', links:['https://blog.naver.com/damyanggun','https://www.youtube.com/@-DAMYANG','https://www.instagram.com/damyang.gun/','https://www.facebook.com/damyang.gun/','https://story.kakao.com/ch/dy-gun','','https://www.damyang.go.kr/tour/index.damyang','']},
+    {name:'동구',   links:['https://blog.naver.com/gjdonggu16','https://www.youtube.com/@gj_donggu','https://www.instagram.com/gjdonggu/','https://www.facebook.com/gjdonggu1','','https://pf.kakao.com/_lrUgxb','','']},
+    {name:'목포시', links:['https://blog.naver.com/mptour123','https://www.youtube.com/@mokpocity','https://www.instagram.com/mokpocity_story/','https://www.facebook.com/mokpo.kr/','https://story.kakao.com/ch/mokpocity','https://pf.kakao.com/_FBwad','https://www.mokpo.go.kr/tour','']},
+    {name:'무안군', links:['https://blog.naver.com/muan5231','https://www.youtube.com/@muancounty','https://www.instagram.com/muancounty/','https://www.facebook.com/official.muan','','https://pf.kakao.com/_GXshX','https://tour.muan.go.kr/tour','']},
+    {name:'보성군', links:['https://blog.naver.com/boseonglove','https://www.youtube.com/@greenboseong','https://www.instagram.com/greenboseong/','https://www.facebook.com/greenboseong','https://story.kakao.com/ch/greenboseong','https://pf.kakao.com/_xigxjfK','https://www.boseong.go.kr/tour','']},
+    {name:'북구',   links:['https://blog.naver.com/gjbukgu','https://www.youtube.com/channel/UCOUWDDkH2m4dvJvXP-GObHw','https://www.instagram.com/gjbukgu/','https://www.facebook.com/gjbukguofficial','https://story.kakao.com/ch/gjbukgu','https://pf.kakao.com/_Jxhucj','','https://x.com/gjbukgu']},
+    {name:'서구',   links:['https://blog.naver.com/gwangjuseogu','https://www.youtube.com/channel/UCsNLUJTyA0cKnawgyf1cNbg','https://www.instagram.com/jngjseogu/','https://www.facebook.com/jngjseogu','https://story.kakao.com/ch/gjseogu','https://pf.kakao.com/_MZDxlC','','']},
+    {name:'순천시', links:['https://blog.naver.com/hongane2013','https://www.youtube.com/@suncheon-si','https://www.instagram.com/suncheonsi/','https://www.facebook.com/suncheon.kr','','https://pf.kakao.com/_KVABu','https://www.suncheon.go.kr/tour/','https://www.threads.com/@suncheonsi']},
+    {name:'신안군', links:['https://blog.naver.com/1004_shinan','https://www.youtube.com/c/1004%EC%84%AC%EC%8B%A0%EC%95%88','https://www.instagram.com/1004shinan_island','https://www.facebook.com/1004shinan','','https://pf.kakao.com/_GGxgxgxb','https://www.shinan.go.kr/home/tour','']},
+    {name:'여수시', links:['https://blog.naver.com/yeosu_city','https://www.youtube.com/channel/UCtQ7Fc7Eny5MfWa9QD6CqcA','https://www.instagram.com/yeosu_city/','https://www.facebook.com/yssinmungo','https://story.kakao.com/ch/yeosu','https://pf.kakao.com/_beAUxl','https://www.yeosu.go.kr/tour?main=true','']},
+    {name:'영광군', links:['https://blog.naver.com/glory_yg','https://www.youtube.com/channel/UCKaBA_DNwYwFlzIWTRLoZag','https://www.instagram.com/yeonggwanggun/','https://www.facebook.com/yeonggwanggun.page/','','https://pf.kakao.com/_DxlFTd','https://tour.yeonggwang.go.kr/','']},
+    {name:'영암군', links:['https://blog.naver.com/yeongammedia','https://www.youtube.com/@yeongamgun','https://www.instagram.com/yeongamgun','https://www.facebook.com/yeongamnews','','https://pf.kakao.com/_xavxgQT','https://www.yeongam.go.kr/home/tour','']},
+    {name:'완도군', links:['https://blog.naver.com/wandocounty','https://www.youtube.com/channel/UC_5XN2j6hPH1AXcAtwipODg','https://www.instagram.com/hyimang_wando/','https://www.facebook.com/wandostory/','https://story.kakao.com/ch/wandostory','','https://www.wando.go.kr/tour/index.cs','']},
+    {name:'장성군', links:['https://blog.naver.com/jangseong-gun','https://www.youtube.com/@jangseonggun','https://www.instagram.com/jangseonggun','https://www.facebook.com/yellowcityjs','https://story.kakao.com/ch/yellowcity-js','https://pf.kakao.com/_saeBK','https://www.jangseong.go.kr/home/tour_new/','']},
+    {name:'장흥군', links:['https://blog.naver.com/jang_heung','https://www.youtube.com/c/%EC%9E%A5%ED%9D%A5%EA%B5%B0/featured','https://www.instagram.com/jangheunggun/','https://www.facebook.com/people/%EC%9E%A5%ED%9D%A5%EA%B5%B0/100087786724346/','https://story.kakao.com/ch/jang_heung','','https://www.jangheung.go.kr/tour','']},
+    {name:'진도군', links:['https://blog.naver.com/jewel-jindo','https://www.youtube.com/channel/UCb0Hqs8zw8QhkKPYP6dFy0g','','','https://story.kakao.com/ch/jindo','','https://www.jindo.go.kr/tour/main.cs','']},
+    {name:'함평군', links:['https://blog.naver.com/hpcounty','https://www.youtube.com/channel/UCZQ2LGgqbk5ppbr9SXrsMLA','https://www.instagram.com/hampyeong/','https://www.facebook.com/hampyeong','','https://pf.kakao.com/_xgxoxfxcj','https://www.hampyeong.go.kr/tour/main.do','']},
+    {name:'해남군', links:['https://blog.naver.com/haenamgunpr','https://www.youtube.com/channel/UCKinsx7JAoKe_Ne8QxaEQ6g','https://www.instagram.com/haenampr/','https://www.facebook.com/haenampr/','https://story.kakao.com/ch/haenampr','','https://www.haenam.go.kr/tour/index.9is?contentUid=18e3368f655bdbc60166192794d9237d','https://twitter.com/haenamgun']},
+    {name:'화순군', links:['https://blog.naver.com/cleanhwasun','https://www.youtube.com/channel/UCLE29loop0SpzYpceF4nIuA','https://www.instagram.com/hwasun_guide','https://www.facebook.com/hwasunnews','','https://pf.kakao.com/_xjjuJG','https://www.hwasun.go.kr/culture/index.do?S=S05','https://x.com/cleanhwasun']}
+  ];
+
+  var CHMO_CHANNELS = [
+    {key:'blog',  icon:'chmo-ic-blog',  label:'블로그'},
+    {key:'yt',    icon:'chmo-ic-yt',    label:'유튜브'},
+    {key:'insta', icon:'chmo-ic-insta', label:'인스타그램'},
+    {key:'fb',    icon:'chmo-ic-fb',    label:'페이스북'},
+    {key:'story', icon:'chmo-ic-storyw',label:'카카오스토리'},
+    {key:'talk',  icon:'chmo-ic-story', label:'카카오톡 채널'},
+    {key:'tour',  icon:'chmo-ic-tour',  label:'문화관광'},
+    {key:'etc',   icon:'chmo-ic-etc',   label:'기타'}
+  ];
+
+  var tbody = document.getElementById('chmoTableBody');
+  if(!tbody){ return; }
+
+  var html = '';
+  for(var i = 0; i < CHMO_REGIONS.length; i++){
+    var region = CHMO_REGIONS[i];
+    html += '<tr><th scope="row">' + region.name + '</th>';
+    for(var j = 0; j < CHMO_CHANNELS.length; j++){
+      var ch = CHMO_CHANNELS[j];
+      var url = region.links[j];
+      if(url && url !== ''){
+        html += '<td><a class="chmo-sns chmo-sns--' + ch.key + '" href="' + url + '"' +
+                (url !== '#' ? ' target="_blank" rel="noopener"' : '') +
+                ' aria-label="' + region.name + ' ' + ch.label + '">' +
+                '<svg aria-hidden="true"><use href="#' + ch.icon + '" xlink:href="#' + ch.icon + '"></use></svg></a></td>';
+      } else {
+        html += '<td><span class="chmo-none">–</span></td>';
+      }
+    }
+    html += '</tr>';
+  }
+  tbody.innerHTML = html;
+
+  /* 앵커링크 부드러운 스크롤 (.contents_div 내부 요소만 제어) */
+  var chmoWrap = tbody.closest ? tbody.closest('.chmo-wrap') : null;
+  var chmoToc = chmoWrap ? chmoWrap.querySelector('.chmo-toc') : null;
+  if(chmoToc && chmoWrap){
+    chmoToc.addEventListener('click', function(e){
+      var link = e.target.closest ? e.target.closest('a[href^="#chmo-"]') : null;
+      if(!link){ return; }
+      var target = chmoWrap.querySelector(link.getAttribute('href'));
+      if(target && target.scrollIntoView){
+        e.preventDefault();
+        target.scrollIntoView({behavior:'smooth', block:'start'});
+      }
+    });
+  }
+})();
+</script>
+</div>
