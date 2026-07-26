@@ -158,6 +158,12 @@
     object-fit:cover;object-position:center;
     display:block;z-index:0;
   }
+  /* ── 고흥 우주천문과학관 1번 사진 : 모바일에서만 확대 ──
+       말풍선이 사진 가운데를 덮어 건물이 잘 안 보이므로 확대 + 아래로 살짝 밀어냄
+       ★ 배율은 scale() / 위치는 transform-origin 세로값(35%)으로 조절 (웹은 .cd-pc 라 적용 안 됨) */
+  .contents_div:not(.cd-pc) .cd-sec-museum .cd-card2 .cd-ph-full .cd-ph-cell:first-child img{
+    transform:scale(1.25);transform-origin:50% 35%;
+  }
   /* ── 1행 상단 : 타이틀 가독성용 블러 + 블랙 그라데이션 (아래로 갈수록 사라짐) ── */
   .contents_div .cd-ph-full .cd-ph-cell:first-child::after{
     content:"";position:absolute;left:0;right:0;top:0;height:40%;z-index:1;pointer-events:none;
@@ -178,7 +184,7 @@
     position:absolute;                                  /* .cd-cin 기준 절대배치 */
     top:9px; right:13px;                                /* ★ 위치 조절 */
     z-index:1000;
-    font-size:11px;                                     /* ★ 글자 크기 */
+    font-size:10.5px;                                   /* ★ 글자 크기 (모바일 전용 / 웹은 아래 .cd-pc 규칙에서 11px) */
     font-weight:500;
     letter-spacing:-.01em;
     line-height:1;
@@ -256,9 +262,13 @@
   .contents_div .cd-sec-benefit{padding-top:30px;}
   .contents_div .cd-sec-cool .cd-bg{background:#F4F5F7;}
   .contents_div .cd-sec-cool .cd-bg::after{background:none;}
+  /* ★ 아래 두 섹션은 .cd-bg::after 흰색 베일(85%/60%/88%)이 그대로 덮여 배경 그라데이션이 거의 안 보였음
+        → 다른 섹션(chat·cool·night·benefit·outro)과 동일하게 베일 해제 */
   .contents_div .cd-sec-market .cd-bg{background:linear-gradient(180deg,#F3FAFF,#E0F1FC);}
-  .contents_div .cd-sec-museum .cd-bg{background:linear-gradient(180deg,#EAF6FF,#DDEEFB);}
-  .contents_div .cd-sec-night .cd-bg{background:linear-gradient(180deg,#12294F,#0E1F3D);}
+  .contents_div .cd-sec-market .cd-bg::after{background:none;}
+  .contents_div .cd-sec-museum .cd-bg{background:#F4F5F7;}   /* ★ 밝은 그레이 (chat·cool 섹션과 동일) */
+  .contents_div .cd-sec-museum .cd-bg::after{background:none;}
+  .contents_div .cd-sec-night .cd-bg{background:#F4F5F7;}   /* ★ 모바일 : 밝은 그레이 (웹은 539행에서 밤하늘 배경 유지) */
   .contents_div .cd-sec-night .cd-bg::after{background:none;}
   .contents_div .cd-sec-night .cd-kicker{background:none;color:var(--cd-coral);}
   /* 어두운 배경이라 파랑 대신 코랄 텍스트 */
@@ -332,6 +342,280 @@
   .contents_div.cd-fit-scale .cd-searchbar .cd-q{font-size:20.5px;}
   .contents_div.cd-fit-scale .cd-spot-name{font-size:25px;}
 
+  /* ══════════════════════════════════════════════════════════════
+     ██ WEB(PC) 레이아웃 ── max-width:800px (유동형)
+     ██ 컨테이너(.contents_div) 폭이 PC_MIN(기본 700px) 이상이면
+     ██ 스크립트가 .cd-pc 클래스를 붙여 이 블록이 켜집니다.
+     ██ 폭은 100% 유동 · 최대 800px 에서 멈추고 가운데 정렬 (축소 없음)
+     ██ 모바일(.cd-pc 미적용)은 기존 480px 기준 스케일 방식 그대로
+     ══════════════════════════════════════════════════════════════ */
+
+  /* ── 페이지 폭 : max-width 800px ── */
+  .contents_div.cd-pc{--cd-w:800px;}
+  .contents_div.cd-pc .cd-page{width:100%;max-width:800px;margin:0 auto;transform:none;}
+  .contents_div.cd-pc .cd-inner{padding:54px 40px 56px;}
+
+  /* ── 인트로 : 원본대로 폭 100%(1:1) 유지 ──
+       히어로가 800px로 커지므로 슬라이드 프레임만 % 로 바꿔 비율 유지
+       (모바일 480 기준 : 296/480=61.7% · 243/480=50.6% · top 40/480=8.3%) */
+  .contents_div.cd-pc .cd-intro-frame{top:8.3%;width:61.7%;height:50.6%;}
+
+  /* ── 섹션 헤더 (키커 + 검색창) ── */
+  .contents_div.cd-pc .cd-inner > div.cd-rise:first-child{margin-bottom:34px;}
+  .contents_div.cd-pc .cd-kicker{font-size:15px;margin-bottom:10px;}
+  .contents_div.cd-pc .cd-searchbar{gap:32px;padding:9px 12px 9px 26px;}
+  .contents_div.cd-pc .cd-searchbar .cd-q{font-size:25px;}
+  .contents_div.cd-pc .cd-searchbar .cd-lens{width:42px;height:42px;}
+  .contents_div.cd-pc .cd-searchbar .cd-lens svg{width:21px;height:21px;}
+
+  /* ── 메신저 인트로 : 폭 제한 + 가운데 정렬 ── */
+  .contents_div.cd-pc .cd-sec-chat .cd-inner{padding:60px 40px 0;}   /* ★ 메신저 창(여름을 여름답게 피하는 방법) 위 60px / 아래 0 */
+  .contents_div.cd-pc .cd-chat-win{max-width:560px;margin:0 auto;}
+  .contents_div.cd-pc .cd-msg .cd-mcol{max-width:72%;}
+
+  /* ══════════════════════════════════════════════════════════
+     ██ 스팟 카드 (으슬으슬 ~ 밤 여행)
+     ██ 웹 전용 디자인 : 모바일의 검정 1px 보더·각진 말풍선 대신
+     ██ 메신저 섹션 / 혜택 섹션과 같은 언어로 통일
+     ██  · 카드   : 흰 배경 + 위→아래로 사라지는 그라데이션 보더 (메신저 창)
+     ██  · 사진   : 검정 보더 제거, 라운드 14px, 8px 간격 분리
+     ██  · 말풍선 : 메신저 말풍선과 동일 (4/16/16/16 라운드, 연한 파랑 보더)
+     ██  · 정보   : 혜택 섹션 스펙 리스트와 동일 (파랑 라벨 + 헤어라인)
+     ██  ┌─────────────┬──────────────┐
+     ██  │   사진      │  번호·제목    │
+     ██  │             │  말풍선       │
+     ██  ├─────────────┴──────────────┤
+     ██  │      정보 카드 (전체 폭)      │
+     ██  └────────────────────────────┘
+     ██ 홀수 카드 사진 왼쪽 / 짝수 카드 사진 오른쪽 (교차)
+     ══════════════════════════════════════════════════════════ */
+  .contents_div.cd-pc .cd-scard{
+    margin:0 0 20px;border-radius:22px;overflow:hidden;box-shadow:none;
+    border:1px solid transparent;
+    background:linear-gradient(#fff,#fff) padding-box,
+               linear-gradient(180deg,#D7E5F3,rgba(215,229,243,0) 88%) border-box;
+  }
+  .contents_div.cd-pc .cd-scard + .cd-scard{margin-top:0;border-top:1px solid transparent;}
+  .contents_div.cd-pc .cd-inner > .cd-scard:last-child{margin-bottom:0;}
+
+  .contents_div.cd-pc .cd-cin.cd-cin-full{
+    --cd-img:360px;                                  /* ★ 큰 사진 가로 크기 */
+    --icol:1;--tcol:2;
+    display:grid;
+    grid-template-columns:var(--cd-img) minmax(0,1fr);
+    column-gap:24px;padding:22px;
+  }
+  /* 짝수 카드 : 사진 오른쪽 교차 */
+  .contents_div.cd-pc .cd-inner > .cd-scard:nth-of-type(even) .cd-cin.cd-cin-full{
+    --icol:2;--tcol:1;
+    grid-template-columns:minmax(0,1fr) var(--cd-img);
+  }
+
+  /* ── 사진 : 검정 보더 없이 라운드 + 사이 간격 ── */
+  .contents_div.cd-pc .cd-ph-full{
+    position:relative;top:auto;right:auto;bottom:auto;left:auto;inset:auto;
+    grid-column:var(--icol);grid-row:1/span 4;
+    height:auto;min-height:318px;                    /* ★ 사진 칸 최소 높이 */
+    margin:0;gap:8px;background:none;border:none;border-radius:0;
+  }
+  .contents_div.cd-pc .cd-ph-full .cd-ph-cell{
+    border:none;border-radius:14px;overflow:hidden;background:#EEF3F8;
+  }
+  /* 모바일용 검정 십자 보더 무효화 (우선순위 때문에 개별 지정) */
+  .contents_div.cd-pc .cd-ph-full .cd-ph-cell:first-child,
+  .contents_div.cd-pc .cd-ph-full.cd-ph-quad .cd-ph-cell:nth-child(1),
+  .contents_div.cd-pc .cd-ph-full.cd-ph-quad .cd-ph-cell:nth-child(2),
+  .contents_div.cd-pc .cd-ph-full.cd-ph-quad .cd-ph-cell:nth-child(3){border:none;}
+
+  /* ── 사진이 2장인 카드 : 큰 사진 1 + 작은 사진 1 ──
+       .cd-ph-full 을 display:contents 로 풀어 두 장을 카드 그리드에 직접 배치
+       · 1번 사진 → 큰 사진 칸 (세로 전체)
+       · 2번 사진 → 텍스트 칸 말풍선 아래 작은 사진 */
+  .contents_div.cd-pc .cd-ph-full:not(.cd-ph-one){display:contents;}
+  .contents_div.cd-pc .cd-ph-full:not(.cd-ph-one) > .cd-ph-cell:nth-child(1){
+    grid-column:var(--icol);grid-row:1/span 4;
+    min-height:0;                                    /* ★ 최소 높이를 두면 세로 사진이 텍스트 칸보다 길어져 하단 여백이 어긋남 → 0 으로 두어 작은 사진과 밑단 정렬 */
+    border-radius:14px;overflow:hidden;background:#EEF3F8;
+  }
+  .contents_div.cd-pc .cd-ph-full:not(.cd-ph-one) > .cd-ph-cell:nth-child(2){
+    grid-column:var(--tcol);grid-row:3;align-self:start;
+    height:auto;aspect-ratio:16/10;margin-top:12px;  /* ★ 작은 사진 비율 (가로형 16:10) */
+    border-radius:14px;overflow:hidden;background:#EEF3F8;
+  }
+
+  /* ── 사진 4장 카드(와인동굴) ──
+       모바일 : 2행 2열 4장 그대로 (.cd-ph-quad 기본 스타일)
+       웹     : 3·4번을 숨기고 위의 사진 2장 레이아웃을 그대로 사용
+                (1번 = 우측 세로 긴 직사각형 / 2번 = 좌측 가로형 16:10) */
+  .contents_div.cd-pc .cd-ph-full.cd-ph-quad > .cd-ph-cell:nth-child(n+3){display:none;}
+
+  /* ── 예외 : 서브 이미지까지 있어 사진이 3장인 카드(사직공원) ──
+       왼쪽 = 긴 사각형 2행 1열 / 오른쪽 = 작은 사각형 1개
+       (:has 미지원 브라우저용으로 아래에 개별 선택자 규칙을 한 번 더 둠) */
+  .contents_div.cd-pc .cd-cin-full:has(.cd-ph-space-rect) .cd-ph-full{display:grid;}
+  .contents_div.cd-pc .cd-cin-full:has(.cd-ph-space-rect) .cd-ph-full > .cd-ph-cell:nth-child(1),
+  .contents_div.cd-pc .cd-cin-full:has(.cd-ph-space-rect) .cd-ph-full > .cd-ph-cell:nth-child(2){
+    grid-column:auto;grid-row:auto;height:auto;min-height:0;margin:0;
+    align-self:stretch;justify-self:stretch;      /* ★ 없으면 2번째 사진 높이가 0 이 됨 */
+  }
+  .contents_div.cd-pc .cd-sec-night .cd-card1 .cd-ph-full{display:grid;}
+  .contents_div.cd-pc .cd-sec-night .cd-card1 .cd-ph-full > .cd-ph-cell:nth-child(1),
+  .contents_div.cd-pc .cd-sec-night .cd-card1 .cd-ph-full > .cd-ph-cell:nth-child(2){
+    grid-column:auto;grid-row:auto;height:auto;min-height:0;margin:0;
+    align-self:stretch;justify-self:stretch;
+  }
+  .contents_div.cd-pc .cd-ph-full .cd-ph-cell:first-child::after,
+  .contents_div.cd-pc .cd-ph-full.cd-ph-quad .cd-ph-cell:nth-child(2)::after{content:none;}
+  /* 출처 : 사진 위 모서리 */
+  .contents_div.cd-pc .cd-cin > .cd-src,
+  .contents_div.cd-pc .cd-cin.cd-cin-full > .cd-src{top:34px;left:36px;right:auto;font-size:11px;}
+  .contents_div.cd-pc .cd-inner > .cd-scard:nth-of-type(even) .cd-cin > .cd-src{left:auto;right:36px;}
+
+  /* 국립아시아문화전당 : 텍스트가 짧아 사진이 납작해 보이므로 높이 추가 (378 → 408px, +30px) */
+  .contents_div.cd-pc .cd-sec-museum .cd-card1 .cd-ph-full{min-height:408px;}
+
+  /* ── 제목 줄 : 번호는 혜택 섹션 번호 스타일, 배지는 아웃라인 캡슐 ── */
+  .contents_div.cd-pc .cd-cin-full .cd-spot-head{grid-column:var(--tcol);grid-row:1;align-self:start;gap:9px;margin-bottom:15px;}
+  .contents_div.cd-pc .cd-spot-no{
+    font-family:'Paperozi',Pretendard,sans-serif;font-size:22px;font-weight:800;
+    color:var(--cd-blue);background:none;border-radius:0;padding:0;line-height:1;
+  }
+  .contents_div.cd-pc .cd-spot-name{font-size:25px;font-weight:600;color:var(--cd-ink);text-shadow:none;}
+  .contents_div.cd-pc .cd-spot-badge{
+    font-size:12.5px;font-weight:700;color:var(--cd-blue);
+    background:#fff;border:1.5px solid var(--cd-line);border-radius:999px;padding:3px 11px;
+  }
+
+  /* ── 말풍선 : 메신저 섹션과 동일한 형태 ── */
+  .contents_div.cd-pc .cd-cin-full .cd-chatline{grid-column:var(--tcol);grid-row:2;align-self:start;margin:0;}
+  .contents_div.cd-pc .cd-chatline .cd-time{
+    color:var(--cd-sub);text-shadow:none;font-size:12.5px;font-weight:600;
+    background:rgba(46,143,224,.09);border-radius:999px;padding:5px 11px;margin-bottom:10px;
+  }
+  .contents_div.cd-pc .cd-chatline .cd-time svg{stroke:var(--cd-sub);filter:none;width:13px;height:13px;}
+  .contents_div.cd-pc .cd-bub{
+    width:auto;background:#fff;border:1px solid rgba(15,98,181,.14);
+    border-radius:4px 16px 16px 16px;padding:11px 14px;
+    font-size:15px;font-weight:500;line-height:1.55;
+    box-shadow:0 2px 10px rgba(15,98,181,.05);
+  }
+  .contents_div.cd-pc .cd-bub + .cd-bub{margin:7px 0 0;border-radius:16px;}
+
+  /* ── 서브 이미지 ── */
+  .contents_div.cd-pc .cd-cin-full .cd-ph-space{display:none;}
+  .contents_div.cd-pc .cd-cin-full .cd-ph-space.cd-ph-space-rect{
+    display:block;grid-column:var(--tcol);grid-row:4;align-self:start;
+    position:relative;height:auto;margin:12px 0 0;
+  }
+  .contents_div.cd-pc .cd-ph-rect,
+  .contents_div.cd-pc .cd-ph-rect.cd-ph-rect-c{
+    position:relative;left:auto;right:auto;top:auto;transform:none;
+    width:100%;height:auto;aspect-ratio:16/10;max-width:none;   /* ★ 작은 사진 비율 : 위 2장 카드와 동일 */
+    border:none;border-radius:14px;background:#EEF3F8;
+  }
+
+  /* ── 정보 카드 : 혜택 섹션 스펙 리스트와 동일한 톤 ── */
+  .contents_div.cd-pc .cd-cin-full .cd-info-card{
+    grid-column:1/-1;grid-row:6;margin-top:22px;
+    background:#F9FAFB;border:1px solid var(--cd-line);border-radius:var(--cd-radius);
+    padding:6px 20px 18px;
+  }
+  .contents_div.cd-pc .cd-irow{
+    align-items:baseline;gap:10px;padding:10px 1px;margin:0;
+    border-bottom:1px solid rgba(15,98,181,.13);font-size:14px;
+  }
+  .contents_div.cd-pc .cd-irow + .cd-irow{margin-top:0;}
+  .contents_div.cd-pc .cd-irow .cd-ic{
+    width:92px;height:auto;font-size:13px;font-weight:700;color:var(--cd-blue);
+    letter-spacing:-.02em;line-height:1.65;
+  }
+  .contents_div.cd-pc .cd-irow .cd-ic::after{content:none;}
+  .contents_div.cd-pc .cd-irow .cd-ic .cd-lb2,
+  .contents_div.cd-pc .cd-irow .cd-ic .cd-lb4{width:58px;}
+  .contents_div.cd-pc .cd-irow .cd-tx{font-size:14px;line-height:1.65;letter-spacing:-.01em;}
+  .contents_div.cd-pc .cd-irow .cd-tx b{color:var(--cd-blue-deep);}
+  /* 웹에서만 줄바꿈 없이 한 줄로 (모바일은 기존 두 줄 유지) */
+  .contents_div.cd-pc .cd-irow .cd-tx br.cd-pc-nobr{display:none;}
+  .contents_div.cd-pc .cd-irow .cd-tx .cd-pc-slash::before{content:" / ";}
+  .contents_div.cd-pc .cd-cool{margin:16px 0 0;padding:6px 13px;border-radius:12px;background:rgba(46,143,224,.06);}
+  .contents_div.cd-pc .cd-cool .cd-ct{font-size:13.5px;}
+
+  /* ══ 밤 섹션 : 밤 테마 ══
+     외부 이미지 대신 CSS로 밤하늘 구성 (핫링크 실패 시 배경이 흰색이 되던 문제도 해결) */
+  .contents_div.cd-pc .cd-sec-night .cd-bg{
+    background:linear-gradient(180deg,#0A1D3D 0%,#15325E 34%,#0C1F3E 72%,#081428 100%);
+  }
+  /* 별 + 달빛 */
+  .contents_div.cd-pc .cd-sec-night .cd-bg::after{
+    content:"";position:absolute;inset:0;pointer-events:none;
+    background-image:
+      radial-gradient(circle at 86% 5%,rgba(255,226,178,.22),rgba(255,226,178,0) 40%),
+      radial-gradient(1.7px 1.7px at 18% 22%,rgba(255,255,255,.85),transparent 100%),
+      radial-gradient(1.2px 1.2px at 62% 46%,rgba(255,255,255,.5),transparent 100%),
+      radial-gradient(1.9px 1.9px at 88% 74%,rgba(255,255,255,.65),transparent 100%),
+      radial-gradient(1px 1px at 36% 82%,rgba(255,255,255,.45),transparent 100%);
+    background-size:100% 100%,260px 230px,330px 290px,390px 350px,210px 190px;
+    background-repeat:no-repeat,repeat,repeat,repeat,repeat;
+  }
+  /* 헤더 : 흰 알약 → 밤하늘 유리 캡슐 */
+  .contents_div.cd-pc .cd-sec-night .cd-kicker{color:#FFB4A3;}
+  .contents_div.cd-pc .cd-sec-night .cd-searchbar{
+    background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.34);
+    -webkit-backdrop-filter:blur(5px);backdrop-filter:blur(5px);
+  }
+  .contents_div.cd-pc .cd-sec-night .cd-searchbar .cd-q{color:#EDF4FC;}
+  .contents_div.cd-pc .cd-sec-night .cd-searchbar .cd-lens{background:var(--cd-coral);}
+
+  /* ── 카드 : 어두운 톤 ── */
+  .contents_div.cd-pc .cd-sec-night .cd-scard{
+    background:linear-gradient(rgba(255,255,255,.055),rgba(255,255,255,.055)) padding-box,
+               linear-gradient(180deg,rgba(255,255,255,.34),rgba(255,255,255,0) 88%) border-box;
+  }
+  .contents_div.cd-pc .cd-sec-night .cd-ph-full .cd-ph-cell{background:rgba(255,255,255,.08);}
+  .contents_div.cd-pc .cd-sec-night .cd-spot-no{color:var(--cd-coral);}
+  .contents_div.cd-pc .cd-sec-night .cd-spot-name{color:#fff;}
+  .contents_div.cd-pc .cd-sec-night .cd-spot-badge{color:#fff;background:rgba(255,255,255,.10);border-color:rgba(255,255,255,.45);}
+  .contents_div.cd-pc .cd-sec-night .cd-chatline .cd-time{color:#CFE0F2;background:rgba(255,255,255,.10);}
+  .contents_div.cd-pc .cd-sec-night .cd-bub{background:rgba(255,255,255,.97);border-color:rgba(255,255,255,.5);box-shadow:none;}
+  .contents_div.cd-pc .cd-sec-night .cd-info-card{background:rgba(255,255,255,.95);border-color:rgba(255,255,255,.35);}
+  .contents_div.cd-pc .cd-sec-night .cd-ph-rect{background:rgba(255,255,255,.08);}
+
+  /* 혜택 : 1단 리스트 → 2단 카드 그리드 */
+  .contents_div.cd-pc .cd-sec-benefit .cd-inner{padding:54px 40px 76px;}
+  .contents_div.cd-pc .cd-bene-panel{
+    margin-top:30px;background:none;border:none;border-radius:0;overflow:visible;
+    display:grid;grid-template-columns:1fr 1fr;gap:20px;
+  }
+  .contents_div.cd-pc .cd-bene{
+    display:flex;flex-direction:column;background:#F9FAFB;
+    border:1px solid var(--cd-line);border-radius:var(--cd-radius);padding:26px 24px;
+  }
+  .contents_div.cd-pc .cd-bene + .cd-bene{background-image:none;}
+  /* ── 혜택 제목 줄 (웹 전용) : 배지 → 윗줄 / 01 + 타이틀 → 아랫줄 한 줄 ── */
+  .contents_div.cd-pc .cd-bene .cd-bene-head{
+    display:grid;grid-template-columns:auto minmax(0,1fr);
+    justify-content:start;align-items:baseline;gap:11px 8px;   /* ★ 배지-타이틀 세로 간격 / 번호-타이틀 가로 간격 */
+  }
+  .contents_div.cd-pc .cd-bene .cd-bene-head .cd-off{grid-area:1/1/2/3;justify-self:start;}
+  .contents_div.cd-pc .cd-bene .cd-bene-no{grid-area:2/1/3/2;}
+  .contents_div.cd-pc .cd-bene .cd-bene-head h4{
+    grid-area:2/2/3/3;flex:none;
+    font-size:18.5px;letter-spacing:-.03em;   /* ★ 한 줄에 들어가도록 축소 (모바일 20px 유지) — 더 키우려면 이 값만 조절 */
+  }
+  .contents_div.cd-pc .cd-bene .cd-spec{margin-bottom:22px;}
+  .contents_div.cd-pc .cd-bene .cd-cta,.contents_div.cd-pc .cd-bene .cd-cta-row{margin-top:auto;}
+
+  /* 아웃트로 */
+  .contents_div.cd-pc .cd-sec-outro .cd-inner{padding:24px 40px 84px;}
+  .contents_div.cd-pc .cd-sec-outro h2{font-size:40px;}
+  .contents_div.cd-pc .cd-sec-outro p{font-size:17px;margin-top:20px;}
+  /* 태그 위 실선 : 다른 섹션과 좌우 패딩(40px) 동일하게 — 폭 제한 없음 */
+  .contents_div.cd-pc .cd-sec-outro .cd-tags{max-width:none;margin:44px 0 0;}
+
+  /* 호버는 바로가기 버튼(.cd-cta)에만 — 원본 규칙 그대로 사용, 카드 호버 없음 */
+  /* ════════════ WEB(PC) 레이아웃 끝 ════════════ */
+
+
 </style>
 
 <div class="cd-stage">
@@ -352,9 +636,9 @@
     </div>
     <div class="cd-intro-frame">
       <div class="cd-intro-track">
-        <img src="img/히어로1.jpg" alt="">
-        <img src="img/히어로2.jpg" alt="">
-        <img src="img/히어로3.jpg" alt="">
+        <img src="img/히어로1.webp" alt="">
+        <img src="img/히어로2.webp" alt="">
+        <img src="img/히어로3.webp" alt="">
       </div>
     </div>
   </section>
@@ -417,7 +701,7 @@
       <article class="cd-scard cd-card1 cd-rise">
         <div class="cd-cin cd-cin-full">
           <div class="cd-ph-full">
-            <div class="cd-ph-cell"><img src="img/광주실내빙상장1.jpg" alt=""></div>
+            <div class="cd-ph-cell"><img src="img/광주실내빙상장1.webp" alt=""></div>
             <div class="cd-ph-cell"><img src="img/광주실내빙상장2.jpg" alt=""></div>
           </div>
           <div class="cd-src">출처: 오매광주</div>
@@ -431,7 +715,7 @@
           <div class="cd-info-card">
             <div class="cd-irow"><span class="cd-ic"><span class="cd-emo cd-i-loc"></span><i class="cd-lb2"><span>위</span><span>치</span></i></span><span class="cd-tx">전남광주통합특별시 서구 금화로 278</span></div>
             <div class="cd-irow"><span class="cd-ic"><span class="cd-emo cd-i-time"></span><i class="cd-lb2"><span>운</span><span>영</span></i></span><span class="cd-tx">월~일 9:00~17:50 <b>(매달 2번째 목요일 휴무)</b></span></div>
-            <div class="cd-irow"><span class="cd-ic"><span class="cd-emo cd-i-fee"></span><i class="cd-lb2"><span>입</span><span>장</span><span>료</span></i></span><span class="cd-tx">성인 4,000원 / 청소년 3,500원 / 어린이 3,000원<br>스케이트 대여 3,000원</span></div>
+            <div class="cd-irow"><span class="cd-ic"><span class="cd-emo cd-i-fee"></span><i class="cd-lb2"><span>입</span><span>장</span><span>료</span></i></span><span class="cd-tx">성인 4,000원 / 청소년 3,500원 / 어린이 3,000원<br class="cd-pc-nobr"><span class="cd-pc-slash">스케이트 대여 3,000원</span></span></div>
             <div class="cd-cool"><span class="cd-cl">COOL POINT</span><span class="cd-ct">빙판 위 한 바퀴면 무더위 리셋, 실내 피서의 정석 코스</span></div>
           </div>
         </div>
@@ -468,7 +752,7 @@
       <article class="cd-scard cd-card3 cd-rise">
         <div class="cd-cin cd-cin-full">
           <div class="cd-ph-full">
-            <div class="cd-ph-cell"><img src="img/광주뒹굴동굴1.jpg" alt=""></div>
+            <div class="cd-ph-cell"><img src="img/광주뒹굴동굴1.webp" alt=""></div>
             <div class="cd-ph-cell"><img src="img/광주뒹굴동굴2.jpg" alt=""></div>
           </div>
           <div class="cd-src">출처: 오매광주</div>
@@ -492,7 +776,7 @@
       <!-- 카드4 : 광양 와인동굴 -->
       <article class="cd-scard cd-card4 cd-rise">
         <div class="cd-cin cd-cin-full">
-          <!-- 프레임 4개 : 2행 2열 · 중앙 십자에만 보더 -->
+          <!-- 프레임 4개 : 모바일은 2행 2열(중앙 십자 보더) / 웹은 3·4번을 숨기고 2장 레이아웃 -->
           <div class="cd-ph-full cd-ph-quad">
             <div class="cd-ph-cell"><img src="img/광양와인동굴1.jpg" alt=""></div>
             <div class="cd-ph-cell"><img src="img/광양와인동굴2.jpg" alt=""></div>
@@ -621,8 +905,8 @@
         <div class="cd-cin cd-cin-full">
           <!-- 프레임 2개 : 2행 1열 · 겹치는 중앙에만 보더 1px solid #292929 -->
           <div class="cd-ph-full">
-            <div class="cd-ph-cell"><img src="img/고흥우주천문과학관1.png" alt=""></div>
-            <div class="cd-ph-cell"><img src="img/고흥우주천문과학관2.png" alt=""></div>
+            <div class="cd-ph-cell"><img src="img/고흥우주천문과학관1.webp" alt=""></div>
+            <div class="cd-ph-cell"><img src="img/고흥우주천문과학관2.webp" alt=""></div>
           </div>
           <div class="cd-src">출처: 고흥군 블로그</div>
           <div class="cd-spot-head"><span class="cd-spot-no">02</span><h3 class="cd-spot-name">고흥 우주천문과학관</h3><span class="cd-spot-badge">성인 3천원</span></div>
@@ -645,7 +929,7 @@
 
   <!-- ═══ SECTION 4 : 밤 여행지 ═══ -->
   <section class="cd-sec-night">
-    <div class="cd-bg" style="background-image:url('https://pixabay.com/get/g11dfe35b0b8bcac60f975e37f6e74214d8c323ae70c70e59c201e201f6e4f5f0df085c229020d8cb6463f81d60ef480f_1920.jpg')"></div>
+    <div class="cd-bg"></div>
     <div class="cd-inner">
       <div class="cd-rise">
         <span class="cd-kicker">더운 낮엔 멈춰! 밤을 즐겨볼까요</span>
@@ -666,8 +950,8 @@
           <div class="cd-spot-head"><span class="cd-spot-no">01</span><h3 class="cd-spot-name">광주 사직공원 전망타워</h3><span class="cd-spot-badge">무료</span></div>
           <div class="cd-chatline">
             <span class="cd-time">&#127769; 오후 9:00 · 라이트쇼 감상</span>
-            <span class="cd-bub">아름다운 외관과 환상적인 야경으로 유명한 <span class="cd-pop">야경명소</span></span>
-            <span class="cd-bub">3층 전시관·4층 전망대, 해 질 녘 방문 추천!</span>
+            <span class="cd-bub">아름다운 외관과 <span class="cd-pop">환상적인 야경</span>으로 유명</span>
+            <span class="cd-bub">3층 전시관·4층 전망대, 더위가 한풀 꺾인 해 질 녘 방문하면 굿!</span>
           </div>
           <!-- 플로팅 직사각형 프레임 (우측) : --cd-rc-w 가로 · --cd-rc-h 세로 · --cd-rc-right 우측 여백 -->
           <div class="cd-ph-space cd-ph-space-rect cd-ph-tall" style="--cd-rc-w:160px;--cd-rc-h:224px;--cd-rc-right:15px;">
@@ -686,7 +970,7 @@
         <div class="cd-cin cd-cin-full">
           <!-- 프레임 2개 : 2행 1열 (아래 img 경로만 교체) -->
           <div class="cd-ph-full">
-            <div class="cd-ph-cell"><img src="img/목포평화광장1.jpg" alt=""></div>
+            <div class="cd-ph-cell"><img src="img/목포평화광장1.webp" alt=""></div>
             <div class="cd-ph-cell"><img src="img/목포평화광장2.jpg" alt=""></div>
           </div>
           <div class="cd-src">출처: 한국관광공사</div>
@@ -794,8 +1078,12 @@
   if (!root && me) root = me.parentElement;
   if (!root) return;
 
-  /* ── 480px 디자인을 컨테이너 폭에 맞춰 통째로 비율 축소 ── */
-  var DESIGN = 480;
+  /* ── 컨테이너 폭에 따라 웹 / 모바일 레이아웃 전환 ──
+       · 컨테이너 >= PC_MIN : 웹 레이아웃 (.cd-pc) · 폭 100%, max-width 800px
+       · 컨테이너 <  PC_MIN : 기존 모바일 480px 디자인 (좁으면 scale 축소)
+       ※ 미디어쿼리(뷰포트)가 아닌 컨테이너 폭 기준이라 임베드 환경에서 안전 */
+  var DESIGN_M = 480;   /* 모바일 기준 폭 (이하일 때만 축소) */
+  var PC_MIN   = 700;   /* ★ 이 폭 이상이면 웹(max-width:800px) 레이아웃으로 전환 */
   var stage = root.querySelector('.cd-stage');
   var page  = root.querySelector('.cd-page');
   var ticking = false;
@@ -805,7 +1093,20 @@
     if (!stage || !page) return;
     var vw = root.clientWidth || stage.clientWidth;
     if (!vw) return;
-    var sc = vw / DESIGN;
+
+    var isPC = vw >= PC_MIN;
+    if (isPC) root.classList.add('cd-pc');
+    else      root.classList.remove('cd-pc');
+
+    /* 웹 모드 : 폭 100% · 최대 800px 유동 → 스케일 축소 안 함 */
+    if (isPC) {
+      root.classList.remove('cd-fit-scale');
+      page.style.transform = '';
+      stage.style.height = '';
+      return;
+    }
+
+    var sc = vw / DESIGN_M;
     if (sc >= 1) {
       root.classList.remove('cd-fit-scale');
       page.style.transform = '';
