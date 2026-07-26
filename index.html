@@ -131,8 +131,8 @@
   .contents_div .cd-ph-space{height:225px;margin:18px 0 20px;}
   /* ── (미사용·백업) 흰 여백 있는 소형 프레임 ── */
   .contents_div .cd-ph-frames{display:grid;grid-template-columns:160px 160px;justify-content:center;gap:37px;margin:18px 0 20px;}
-  .contents_div .cd-ph-frame{position:relative;width:160px;height:195px;background:#fff;border:1px solid #292929;overflow:hidden;display:grid;place-items:center;}
-  .contents_div .cd-ph-frame img{width:100%;height:100%;object-fit:cover;display:block;}
+  .contents_div .cd-ph-frame{position:relative;width:160px;height:195px;background:#fff;border:1px solid #292929;overflow:hidden;}
+  .contents_div .cd-ph-frame img{position:absolute;top:0;right:0;bottom:0;left:0;width:100%;height:100%;object-fit:cover;object-position:center;display:block;}
   /* ── 이미지 프레임 : 2행 1열 · .cd-cin 가득 채움 (카드1~4 공통) ── */
   .contents_div .cd-cin.cd-cin-full{position:relative;}
   .contents_div .cd-cin-full .cd-ph-space{height:225px;}
@@ -141,11 +141,23 @@
   /* ★ 2행1열 · 2행2열 프레임만 +10px (텍스트에 가려지는 영역 보정) */
   .contents_div .cd-cin-full .cd-ph-space.cd-ph-tall{height:235px;}
   /* 2행 프레임 + 플로팅 직사각형 동시 사용 시 높이 유지 */
-  .contents_div .cd-ph-full{position:absolute;inset:0;z-index:0;display:grid;grid-template-rows:1fr 1fr;background:#fff;}
-  .contents_div .cd-ph-full .cd-ph-cell{position:relative;overflow:hidden;display:grid;place-items:center;}
+  .contents_div .cd-ph-full{
+    position:absolute;
+    top:0;right:0;bottom:0;left:0;                                    /* inset 미지원 구형 모바일 대응 */
+    inset:0;
+    z-index:0;display:grid;grid-template-rows:1fr 1fr;background:#fff;
+    overflow:hidden;
+  }
+  .contents_div .cd-ph-full .cd-ph-cell{position:relative;overflow:hidden;min-width:0;min-height:0;}
   .contents_div .cd-ph-full .cd-ph-cell:first-child{border-bottom:1px solid #292929;}
   /* 1행 1열 하단에만 보더 */
-  .contents_div .cd-ph-full .cd-ph-cell img{width:100%;height:100%;object-fit:cover;display:block;}
+  /* ★ 모바일에서 height:100%가 안 잡혀 사진 위아래 흰 여백이 생기던 문제 → 절대배치로 무조건 꽉 채움 */
+  .contents_div .cd-ph-full .cd-ph-cell img{
+    position:absolute;top:0;right:0;bottom:0;left:0;
+    width:100%;height:100%;
+    object-fit:cover;object-position:center;
+    display:block;z-index:0;
+  }
   /* ── 1행 상단 : 타이틀 가독성용 블러 + 블랙 그라데이션 (아래로 갈수록 사라짐) ── */
   .contents_div .cd-ph-full .cd-ph-cell:first-child::after{
     content:"";position:absolute;left:0;right:0;top:0;height:40%;z-index:1;pointer-events:none;
@@ -194,7 +206,7 @@
     border:1px solid #292929;border-radius:0;                         /* 보더 1px · 라운드 없음 */
     overflow:hidden;background:#fff;
   }
-  .contents_div .cd-ph-rect img{width:100%;height:100%;object-fit:cover;display:block;}
+  .contents_div .cd-ph-rect img{position:absolute;top:0;right:0;bottom:0;left:0;width:100%;height:100%;object-fit:cover;object-position:center;display:block;}
   /* 중앙 배치 · 16:10 변형 */
   .contents_div .cd-ph-rect.cd-ph-rect-c{
     right:auto;left:50%;transform:translate(-50%,-50%);               /* 중앙 정렬 */
