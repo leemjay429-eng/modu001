@@ -88,20 +88,20 @@
   .contents_div .cd-chat-top{display:flex;align-items:center;gap:12px;padding:15px 16px;background:#fff;border-bottom:1px solid rgba(23,54,79,.08);}
   .contents_div .cd-chat-top .cd-bk{font-size:20px;font-weight:700;color:var(--cd-ink);line-height:1;}
   .contents_div .cd-chat-top .cd-cname{flex:1;font-family:'Paperozi',Pretendard,sans-serif;font-size:16px;font-weight:500;letter-spacing:-.02em;}
-  .contents_div .cd-chat-top .cd-cname small{display:block;font-size:11px;font-weight:500;color:var(--cd-sub);margin-top:2px;}
+  .contents_div .cd-chat-top .cd-cname small{display:block;font-size:12px;font-weight:500;color:var(--cd-sub);margin-top:2px;}
   .contents_div .cd-chat-top .cd-cic{display:flex;align-items:center;gap:14px;color:var(--cd-ink);}
   .contents_div .cd-chat-top .cd-cic svg{width:18px;height:18px;stroke:var(--cd-ink);stroke-width:2;fill:none;}
   .contents_div .cd-chat-top .cd-ham{font-size:17px;line-height:1;}
   .contents_div .cd-chat-body{background:#CFE4F6;padding:18px 14px 22px;}
-  .contents_div .cd-date-chip{display:block;width:fit-content;margin:0 auto 14px;font-size:11px;font-weight:600;color:#fff;background:rgba(23,54,79,.28);border-radius:999px;padding:5px 12px;}
+  .contents_div .cd-date-chip{display:block;width:fit-content;margin:0 auto 14px;font-size:12px;font-weight:600;color:#fff;background:rgba(23,54,79,.28);border-radius:999px;padding:5px 12px;}
   .contents_div .cd-msg{display:flex;gap:8px;margin-bottom:14px;align-items:flex-end;}
   .contents_div .cd-msg .cd-ava{flex:none;width:34px;height:34px;border-radius:14px;background:linear-gradient(140deg,var(--cd-blue),#7CC4F5);display:grid;place-items:center;align-self:flex-start;font-family:'Paperozi',Pretendard,sans-serif;font-size:17px;font-weight:700;line-height:1;letter-spacing:-.02em;color:#fff;text-shadow:0 1px 2px rgba(15,98,181,.28);user-select:none;}
   .contents_div .cd-msg .cd-mcol{max-width:78%;}
-  .contents_div .cd-msg .cd-mname{font-size:11.5px;font-weight:600;color:var(--cd-sub);margin:0 0 4px 2px;}
+  .contents_div .cd-msg .cd-mname{font-size:12.5px;font-weight:600;color:var(--cd-sub);margin:0 0 4px 2px;}
   .contents_div .cd-mbub{background:#fff;border-radius:4px 16px 16px 16px;padding:11px 14px;font-size:14.5px;font-weight:500;line-height:1.55;}
   .contents_div .cd-mbub + .cd-mbub{margin-top:6px;border-radius:16px;}
   .contents_div .cd-mbub .cd-pop{color:var(--cd-blue-deep);font-weight:800;}
-  .contents_div .cd-msg .cd-mtime{flex:none;font-size:10.5px;color:var(--cd-sub);font-weight:500;}
+  .contents_div .cd-msg .cd-mtime{flex:none;font-size:11.5px;color:var(--cd-sub);font-weight:500;}
   .contents_div .cd-msg.cd-me{justify-content:flex-end;}
   .contents_div .cd-msg.cd-me .cd-mbub{background:var(--cd-blue);color:#fff;border-radius:16px 4px 16px 16px;}
   .contents_div .cd-msg.cd-me .cd-mtime{order:-1;}
@@ -128,18 +128,18 @@
   .contents_div .cd-bub .cd-pop{color:var(--cd-blue-deep);font-weight:800;}
   .contents_div .cd-sec-night .cd-bub{background:rgba(255,255,255,.96);}
   /* 위치/운영/입장료 카드 */
-  .contents_div .cd-ph-space{height:225px;margin:18px 0 20px;}
+  .contents_div .cd-ph-space{height:232px;margin:18px 0 20px;}
   /* ── (미사용·백업) 흰 여백 있는 소형 프레임 ── */
   .contents_div .cd-ph-frames{display:grid;grid-template-columns:160px 160px;justify-content:center;gap:37px;margin:18px 0 20px;}
   .contents_div .cd-ph-frame{position:relative;width:160px;height:195px;background:#fff;border:1px solid #292929;overflow:hidden;}
   .contents_div .cd-ph-frame img{position:absolute;top:0;right:0;bottom:0;left:0;width:100%;height:100%;object-fit:cover;object-position:center;display:block;}
   /* ── 이미지 프레임 : 2행 1열 · .cd-cin 가득 채움 (카드1~4 공통) ── */
   .contents_div .cd-cin.cd-cin-full{position:relative;}
-  .contents_div .cd-cin-full .cd-ph-space{height:225px;}
+  .contents_div .cd-cin-full .cd-ph-space{height:232px;}
   /* 프레임 노출 높이 (사진이 보이는 구간) */
-  .contents_div .cd-cin-full .cd-ph-space:not(.cd-ph-space-rect){height:242px;}
+  .contents_div .cd-cin-full .cd-ph-space:not(.cd-ph-space-rect){height:249px;}
   /* ★ 2행1열 · 2행2열 프레임만 +10px (텍스트에 가려지는 영역 보정) */
-  .contents_div .cd-cin-full .cd-ph-space.cd-ph-tall{height:242px;}
+  .contents_div .cd-cin-full .cd-ph-space.cd-ph-tall{height:249px;}
   /* 2행 프레임 + 플로팅 직사각형 동시 사용 시 높이 유지 */
   .contents_div .cd-ph-full{
     position:absolute;
@@ -178,11 +178,11 @@
     position:absolute;                                  /* .cd-cin 기준 절대배치 */
     top:9px; right:13px;                                /* ★ 위치 조절 */
     z-index:1000;
-    font-size:9.5px;                                    /* ★ 글자 크기 */
+    font-size:11px;                                     /* ★ 글자 크기 */
     font-weight:500;
     letter-spacing:-.01em;
     line-height:1;
-    color:rgba(255,255,255,.80);                        /* ★ 글자 색 */
+    color:rgba(255,255,255,.92);                        /* ★ 글자 색 */
     text-shadow:0 1px 3px rgba(0,0,0,.55);
     pointer-events:none;
     user-select:none;
@@ -197,7 +197,7 @@
   .contents_div .cd-ph-space.cd-ph-space-rect{
     height:225px;                                                     /* .cd-cin 레이아웃 높이 — 건드리지 않음 */
     --cd-rc-w:210px;                                                     /* ★ 가로 크기 (우측 배치용) */
-    --cd-rc-h:197px;                                                     /* ★ 세로 크기 — 225px 안이어야 위아래 텍스트를 안 가림 */
+    --cd-rc-h:204px;                                                     /* ★ 세로 크기 — 232px 안이어야 위아래 텍스트를 안 가림 */
     --cd-rc-right:15px;                                                  /* ★ 우측 여백 — 음수면 카드 바깥쪽으로 */
   }
   .contents_div .cd-ph-rect{
@@ -235,17 +235,18 @@
   .contents_div .cd-info-card .cd-who .cd-tag{color:var(--cd-sub);font-weight:500;}
   .contents_div .cd-irow{display:flex;align-items:flex-start;gap:8px;font-size:14.5px;}
   .contents_div .cd-irow + .cd-irow{margin-top:3px;}
-  .contents_div .cd-irow .cd-ic{flex:none;width:78px;display:flex;align-items:center;gap:8px;font-size:14.5px;font-weight:500;color:var(--cd-ink);height:20px;}
+  .contents_div .cd-irow .cd-ic{flex:none;width:88px;display:flex;align-items:center;gap:8px;font-size:14.5px;font-weight:500;color:var(--cd-ink);height:20px;}
   .contents_div .cd-irow .cd-ic .cd-emo{flex:none;width:13px;height:13px;background-position:center;background-repeat:no-repeat;background-size:contain;}
   .contents_div .cd-irow .cd-ic .cd-emo-txt{height:auto;font-size:12.5px;line-height:20px;text-align:center;font-weight:400;font-family:'Apple Color Emoji','Segoe UI Emoji','Noto Color Emoji',sans-serif;}
   .contents_div .cd-irow .cd-tx{font-weight:400;flex:1;line-height:20px;}
-  .contents_div .cd-irow .cd-ic .cd-lb2{font-style:normal;display:inline-flex;width:44px;justify-content:space-between;}
+  .contents_div .cd-irow .cd-ic .cd-lb2{font-style:normal;display:inline-flex;width:54px;justify-content:space-between;}
+  .contents_div .cd-irow .cd-ic .cd-lb4{font-style:normal;display:inline-flex;width:54px;justify-content:space-between;letter-spacing:-1px;}
   .contents_div .cd-irow .cd-ic::after{content:"|";font-weight:400;color:rgba(23,54,79,.28);line-height:20px;}
   .contents_div .cd-irow .cd-tx b{font-weight:700;}
   .contents_div .cd-cool{margin:7px 0 2px;background:none;border:1px solid var(--cd-blue);border-radius:999px;padding:3px 11px;display:flex;gap:7px;align-items:center;}
-  .contents_div .cd-cool .cd-cl{flex:none;font-size:10px;font-weight:800;letter-spacing:.06em;color:var(--cd-blue);background:none;border:none;border-radius:0;padding:0;align-self:stretch;display:flex;align-items:center;}
+  .contents_div .cd-cool .cd-cl{flex:none;font-size:11px;font-weight:800;letter-spacing:.06em;color:var(--cd-blue);background:none;border:none;border-radius:0;padding:0;align-self:stretch;display:flex;align-items:center;}
   .contents_div .cd-cool .cd-cl::after{content:"\2022";margin-left:8px;font-size:15px;font-weight:800;line-height:1;letter-spacing:0;}
-  .contents_div .cd-cool .cd-ct{font-size:13px;font-weight:400;line-height:1.4;color:var(--cd-blue);}
+  .contents_div .cd-cool .cd-ct{font-size:13.5px;font-weight:400;line-height:1.4;color:var(--cd-blue);}
   /* ══ 섹션별 고유 배경 ══ */
   .contents_div .cd-sec-chat .cd-bg{background:#F4F5F7;}
   .contents_div .cd-sec-chat .cd-bg::after{background:none;}
@@ -277,10 +278,10 @@
   /* ── 정보 스펙 리스트 : 박스 없이 라벨+값 / 헤어라인으로만 구분 ── */
   .contents_div .cd-bene .cd-spec{margin-top:18px;border-top:1px solid rgba(15,98,181,.13);}
   .contents_div .cd-bene .cd-spec>div{display:flex;gap:10px;align-items:baseline;padding:9px 1px;border-bottom:1px solid rgba(15,98,181,.13);}
-  .contents_div .cd-bene .cd-spec dt{flex:none;width:52px;font-size:12.5px;font-weight:700;color:var(--cd-blue);letter-spacing:-.02em;line-height:1.65;}
+  .contents_div .cd-bene .cd-spec dt{flex:none;width:54px;font-size:13px;font-weight:700;color:var(--cd-blue);letter-spacing:-.02em;line-height:1.65;}
   .contents_div .cd-bene .cd-spec dd{flex:1;min-width:0;font-size:13.5px;font-weight:500;color:var(--cd-ink);letter-spacing:-.01em;line-height:1.65;}
   .contents_div .cd-bene .cd-spec dd b{font-weight:700;color:var(--cd-blue-deep);}
-  .contents_div .cd-bene .cd-spec dd .cd-add{display:inline-block;margin-top:3px;font-size:12.5px;font-weight:400;color:var(--cd-sub);}
+  .contents_div .cd-bene .cd-spec dd .cd-add{display:inline-block;margin-top:3px;font-size:13px;font-weight:350;color:var(--cd-blue);}
   .contents_div .cd-bene .cd-cta-row{display:flex;gap:8px;margin-top:20px;}
   .contents_div .cd-bene .cd-cta-row .cd-cta{flex:1;margin-top:0;padding:13px 6px;}
   .contents_div .cd-bene .cd-cta{display:flex;align-items:center;justify-content:center;gap:6px;margin-top:20px;background:var(--cd-blue);color:#fff;font-size:14.5px;font-weight:800;letter-spacing:-.01em;text-decoration:none;border-radius:12px;padding:13px;}
@@ -296,7 +297,7 @@
   .contents_div .cd-sec-outro h2 .cd-cool-t{color:var(--cd-blue-deep);}
   .contents_div .cd-sec-outro p{margin-top:16px;font-size:15px;font-weight:600;color:var(--cd-sub);line-height:1.6;}
   .contents_div .cd-sec-outro .cd-tags{margin-top:38px;padding-top:18px;border-top:1px solid rgba(15,98,181,.14);display:flex;flex-wrap:wrap;justify-content:center;gap:5px 9px;}
-  .contents_div .cd-sec-outro .cd-tags span{font-size:11px;font-weight:600;letter-spacing:-.01em;color:rgba(15,98,181,.6);line-height:1.6;}
+  .contents_div .cd-sec-outro .cd-tags span{font-size:12px;font-weight:600;letter-spacing:-.01em;color:rgba(15,98,181,.6);line-height:1.6;}
   .contents_div .cd-rise{opacity:0;transform:translateY(26px);transition:opacity .6s ease,transform .6s ease;}
   .contents_div .cd-in.cd-rise,
   .contents_div .cd-in .cd-rise{opacity:1;transform:none;}
@@ -549,7 +550,7 @@
           <div class="cd-info-card">
             <div class="cd-irow"><span class="cd-ic"><span class="cd-emo cd-i-loc"></span><i class="cd-lb2"><span>위</span><span>치</span></i></span><span class="cd-tx">전남광주통합특별시 광산구 사암로 300</span></div>
             <div class="cd-irow"><span class="cd-ic"><span class="cd-emo cd-i-time"></span><i class="cd-lb2"><span>운</span><span>영</span></i></span><span class="cd-tx">매일(상설시장) 6:00~22:00 <b>· 매월 1·3주 일요일 휴무</b></span></div>
-            <div class="cd-irow"><span class="cd-ic"><span class="cd-emo cd-emo-txt">🛍️</span><i class="cd-lb2"><span>품</span><span>목</span></i></span><span class="cd-tx">신선한 수산물, 먹거리</span></div>
+            <div class="cd-irow"><span class="cd-ic cd-ic-item"><span class="cd-emo cd-emo-txt">🛍️</span><i class="cd-lb4"><span>대</span><span>표</span><span>품</span><span>목</span></i></span><span class="cd-tx">신선한 수산물, 먹거리</span></div>
             <div class="cd-cool"><span class="cd-cl">COOL POINT</span><span class="cd-ct">광주 3대 튀김집, 여기서 꼭 맛보기</span></div>
           </div>
         </div>
@@ -573,7 +574,7 @@
           <div class="cd-info-card">
             <div class="cd-irow"><span class="cd-ic"><span class="cd-emo cd-i-loc"></span><i class="cd-lb2"><span>위</span><span>치</span></i></span><span class="cd-tx">전남광주통합특별시 나주시 청동길 14</span></div>
             <div class="cd-irow"><span class="cd-ic"><span class="cd-emo cd-i-time"></span><i class="cd-lb2"><span>운</span><span>영</span></i></span><span class="cd-tx">상설시장 매일 9:00~21:00 · 오일시장 4·9일</span></div>
-            <div class="cd-irow"><span class="cd-ic"><span class="cd-emo cd-emo-txt">🛍️</span><i class="cd-lb2"><span>품</span><span>목</span></i></span><span class="cd-tx">홍어, 참기름, 생선</span></div>
+            <div class="cd-irow"><span class="cd-ic cd-ic-item"><span class="cd-emo cd-emo-txt">🛍️</span><i class="cd-lb4"><span>대</span><span>표</span><span>품</span><span>목</span></i></span><span class="cd-tx">홍어, 참기름, 생선</span></div>
             <div class="cd-cool"><span class="cd-cl">COOL POINT</span><span class="cd-ct">시장맛집의 전라도식 콩국수까지 맛보면 완벽한 여름 완성</span></div>
           </div>
         </div>
@@ -586,7 +587,7 @@
     <div class="cd-bg"></div>
     <div class="cd-inner">
       <div class="cd-rise">
-        <span class="cd-kicker">그거 아세요? 에어컨이 빵빵하다는 걸</span>
+        <span class="cd-kicker">에어컨이 빵빵한 이곳</span>
         <div class="cd-searchbar">
           <span class="cd-q">전시관과 박물관으로 피서 가기</span>
           <span class="cd-lens"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><line x1="16.5" y1="16.5" x2="21" y2="21"/></svg></span>
@@ -647,7 +648,7 @@
     <div class="cd-bg" style="background-image:url('https://pixabay.com/get/g11dfe35b0b8bcac60f975e37f6e74214d8c323ae70c70e59c201e201f6e4f5f0df085c229020d8cb6463f81d60ef480f_1920.jpg')"></div>
     <div class="cd-inner">
       <div class="cd-rise">
-        <span class="cd-kicker">더운 낮엔 멈춰! 7월 말 일몰은 저녁 7시 40분</span>
+        <span class="cd-kicker">더운 낮엔 멈춰! 밤을 즐겨볼까요</span>
         <div class="cd-searchbar">
           <span class="cd-q">해가 지면 시작되는 밤 여행</span>
           <span class="cd-lens"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><line x1="16.5" y1="16.5" x2="21" y2="21"/></svg></span>
@@ -669,7 +670,7 @@
             <span class="cd-bub">3층 전시관·4층 전망대, 해 질 녘 방문 추천!</span>
           </div>
           <!-- 플로팅 직사각형 프레임 (우측) : --cd-rc-w 가로 · --cd-rc-h 세로 · --cd-rc-right 우측 여백 -->
-          <div class="cd-ph-space cd-ph-space-rect cd-ph-tall" style="--cd-rc-w:160px;--cd-rc-h:217px;--cd-rc-right:15px;">
+          <div class="cd-ph-space cd-ph-space-rect cd-ph-tall" style="--cd-rc-w:160px;--cd-rc-h:224px;--cd-rc-right:15px;">
             <div class="cd-ph-rect"><img src="img/광주사직공원전망대3.jpg" alt=""></div>
           </div>
           <div class="cd-info-card">
